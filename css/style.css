@@ -1,0 +1,63 @@
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-md-6 {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+ul li strong {
+  font-weight: bold;
+}
+
+/* If you're using a separate CSS file, link it in the head of your HTML:
+<link rel="stylesheet" type="text/css" href="path/to/your/stylesheet.css">
+*/
+
+
+ul.interests, ul.education {
+  list-style: none; /* Removes default list styling */
+  padding: 0; /* Removes default padding */
+}
+
+ul.interests li::before {
+  content: '•'; /* Adds a bullet */
+  color: black; /* Sets the color of the bullet */
+  font-weight: bold; /* Makes the bullet bold */
+  display: inline-block; /* Allows margin to be applied */
+  width: 1em; /* Ensures spacing between bullet and text */
+  margin-left: -1em; /* Pulls the bullet into the padding area */
+}
+
+ul.education li i {
+  margin-right: 0.5em; /* Adds spacing between icon and text */
+}
