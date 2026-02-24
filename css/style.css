@@ -1,0 +1,115 @@
+/* Modern custom styles for academic site */
+
+:root {
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --accent: #7948ed;
+  --accent-hover: #5f3bc4;
+  --text-muted: #5c5c5c;
+  --section-spacing: 4rem;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Section headings */
+.home-section h1.mb-0,
+.section-heading h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: inherit;
+}
+
+/* Publications */
+.publications-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.pub-category {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  color: var(--accent);
+}
+
+.publications-list li:first-child .pub-category {
+  margin-top: 0;
+}
+
+.publications-list a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.publications-list a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* Profile / About */
+#profile .portrait-title h2 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.network-icon .big-icon {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.network-icon a:hover .big-icon {
+  transform: scale(1.1);
+}
+
+/* Cards (experience, etc.) */
+.card {
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* Interests list */
+.interests {
+  list-style: none;
+  padding-left: 0;
+}
+
+.interests li::before {
+  content: "▸ ";
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.interests li {
+  margin-bottom: 0.35rem;
+}
+
+/* Navbar */
+.navbar-light .navbar-nav .nav-link {
+  font-weight: 500;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: var(--accent);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Footer */
+.site-footer {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
