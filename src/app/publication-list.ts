@@ -39,6 +39,9 @@ const LABELS: Record<Filter, string> = {
                 @for (part of splitAuthors(p.authors); track $index) {@if (part.me) {<strong>{{ part.text }}</strong>} @else {{{ part.text }}}}
               </span>
               <span class="pub__venue">{{ p.venue }}</span>
+              @if (p.collab; as cb) {
+                <span class="collab">In collaboration with <a [href]="cb.url" target="_blank" rel="noopener">{{ cb.label }}</a></span>
+              }
             </li>
           }
         </ol>

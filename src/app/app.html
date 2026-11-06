@@ -85,19 +85,9 @@
     </div>
   </section>
 
-  <!-- Demos -->
-  <section class="sec wrap" id="demos" aria-labelledby="demos-h">
-    <h2 class="sec__h" id="demos-h">Demos</h2>
-    <div class="sec__body">
-      <div class="demos">
-        @for (d of c.demos; track d.title) { <app-demo-card [demo]="d" /> }
-      </div>
-    </div>
-  </section>
-
   <!-- Projects -->
   <section class="sec wrap" id="projects" aria-labelledby="projects-h">
-    <h2 class="sec__h" id="projects-h">Projects</h2>
+    <h2 class="sec__h" id="projects-h">Research projects</h2>
     <div class="sec__body">
       @for (p of c.projects; track p.title) {
         <article class="item" [class.item--logo]="p.logo">
@@ -107,7 +97,24 @@
           <h3 class="item__title">{{ p.title }}</h3>
           <p class="item__meta">{{ p.status }}</p>
           <p class="item__body">{{ p.body }}</p>
+          @if (p.demo; as d) {
+            <div class="item__demo">
+              @if ('interactive' in d) {
+                <app-cpd-demo />
+              } @else {
+                <app-demo-card [video]="d.video" />
+                @if (d.caption) { <p class="item__caption">{{ d.caption }}</p> }
+              }
+            </div>
+          }
           @for (n of p.notes ?? []; track $index) { <p class="item__note">{{ n }}</p> }
+          @if (p.collaborators?.length) {
+            <p class="collab">In collaboration with
+              @for (cb of p.collaborators; track cb.url; let last = $last) {
+                <a [href]="cb.url" target="_blank" rel="noopener">{{ cb.label }}</a>@if (!last) {, }
+              }
+            </p>
+          }
           @if (p.sponsor; as sp) {
             <p class="sponsor">
               <span>Sponsored by</span>
@@ -120,6 +127,20 @@
                 <a [href]="l.url" [attr.target]="l.url.startsWith('#') ? null : '_blank'" rel="noopener">{{ l.label }}</a>
               }
             </p>
+          }
+          @if (p.outputs?.length) {
+            <ul class="outputs">
+              @for (o of p.outputs; track o.text) {
+                <li>
+                  <span class="outputs__kind">{{ o.kind }}</span>
+                  @if (o.url) {
+                    <a [href]="o.url" target="_blank" rel="noopener">{{ o.text }}</a>
+                  } @else {
+                    <span>{{ o.text }}</span>
+                  }
+                </li>
+              }
+            </ul>
           }
         </article>
       }

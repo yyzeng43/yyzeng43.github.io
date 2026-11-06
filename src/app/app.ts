@@ -12,12 +12,13 @@ import * as C from './content';
 import { ShiftGraphic } from './shift-graphic';
 import { DemoCard } from './demo-card';
 import { PublicationList } from './publication-list';
+import { CpdDemo } from './cpd-demo';
 
 type Theme = 'light' | 'dark';
 
 @Component({
   selector: 'app-root',
-  imports: [ShiftGraphic, DemoCard, PublicationList],
+  imports: [ShiftGraphic, DemoCard, PublicationList, CpdDemo],
   templateUrl: './app.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -26,8 +27,7 @@ export class App implements AfterViewInit {
   protected readonly year = new Date().getFullYear();
   protected readonly nav = [
     { id: 'about', label: 'About' },
-    { id: 'demos', label: 'Demos' },
-    { id: 'projects', label: 'Projects' },
+    { id: 'projects', label: 'Research' },
     { id: 'experience', label: 'Experience' },
     { id: 'publications', label: 'Publications' },
     { id: 'skills', label: 'Skills' },

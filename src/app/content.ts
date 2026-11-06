@@ -8,19 +8,11 @@ export interface Link {
   url: string;
 }
 
-export interface Demo {
-  title: string;
-  description: string;
-  /** Leave the whole `video` out to show a "coming soon" placeholder. */
-  video?:
-    | { kind: 'youtube'; id: string }
-    | { kind: 'vimeo'; id: string }
-    /** A file in public/videos, e.g. 'videos/tacit-knowledge.mp4'. Keep files under ~50 MB. */
-    | { kind: 'file'; src: string; poster?: string };
-  links?: Link[];
-  /** Shown under the description as "Sponsored by <logo>". */
-  sponsor?: Sponsor;
-}
+/** A demo video: YouTube, Vimeo, or a file in public/videos (keep files under ~50 MB). */
+export type Video =
+  | { kind: 'youtube'; id: string }
+  | { kind: 'vimeo'; id: string }
+  | { kind: 'file'; src: string; poster?: string };
 
 export interface Sponsor {
   name: string;
@@ -28,16 +20,28 @@ export interface Sponsor {
   url?: string;
 }
 
+/** A paper or talk listed at the end of a project. */
+export interface Output {
+  kind: 'Paper' | 'Talk';
+  text: string;
+  url?: string;
+}
+
 export interface Project {
   title: string;
   status: string;
   body: string;
-  /** Extra lines, e.g. talks or outcomes. */
+  /** Demo shown inside the project: a video, or the built-in interactive change-point demo. */
+  demo?: { video: Video; caption?: string } | { interactive: 'change-point' };
+  /** Short extra lines, e.g. funding. */
   notes?: string[];
   links: Link[];
   /** Project logo shown beside the entry. */
   logo?: { src: string; alt: string; url?: string };
   sponsor?: Sponsor;
+  collaborators?: Link[];
+  /** Papers and talks from this project, listed at the end. */
+  outputs?: Output[];
 }
 
 export interface Publication {
@@ -47,7 +51,11 @@ export interface Publication {
   year: number;
   url?: string;
   type: 'journal' | 'conference' | 'preprint' | 'thesis';
+  /** Shown as "In collaboration with <name>". */
+  collab?: Link;
 }
+
+const xiaoyuChen: Link = { label: 'Dr. Xiaoyu Chen', url: 'https://www.acsu.buffalo.edu/~xchen325/' };
 
 export interface Role {
   title: string;
@@ -77,8 +85,8 @@ export const profile = {
 };
 
 export const highlights: string[] = [
-  'First-author paper at ICML 2026 on online change-point detection for distribution-valued data',
-  'Papers at NeurIPS 2026 (Riemannian ordinary least squares) and AAAI 2026 (hierarchical dataset selection)',
+  'First-author paper at ICML 2026 on online change-point detection for distribution-valued data, with Dr. Xiaoyu Chen',
+  'Papers at NeurIPS 2026 (Riemannian ordinary least squares, with Dr. Xiaoyu Chen) and AAAI 2026 (hierarchical dataset selection)',
   '19 peer-reviewed papers, including IEEE SaTML, IEEE T-ASE, and ACM TIST',
   '$80K in industry-institute funding as PI on two projects',
   'Organizer of the first Workshop on Resilient AI for Manufacturing (RAiM) at IEEE ICDM 2025',
@@ -112,51 +120,52 @@ export const about = {
   ],
 };
 
-/**
- * Demo videos. Examples:
- *   video: { kind: 'youtube', id: 'dQw4w9WgXcQ' }          // from youtube.com/watch?v=<id>
- *   video: { kind: 'vimeo', id: '123456789' }
- *   video: { kind: 'file', src: 'videos/demo.mp4', poster: 'videos/demo.jpg' }
- */
 const valvoline: Sponsor = { name: 'Valvoline', logo: 'logos/valvoline.png', url: 'https://www.valvoline.com/' };
 
-export const demos: Demo[] = [
-  {
-    title: 'AI decision support for industrial blending',
-    description:
-      'A GNN screens each lot order, XGBoost predicts quality specs, Bayesian optimization recommends material adjustments, and an LLM explains the decision with historical cases. Component codes and quantities are blurred.',
-    video: { kind: 'file', src: 'videos/valvoline-demo.mp4', poster: 'videos/valvoline-demo.jpg' },
-    sponsor: valvoline,
-  },
-  {
-    title: 'Human digital twin',
-    description:
-      'Generative models and data synthesis for personalized, adaptive decision making in healthcare, with UC Health.',
-  },
-];
-
+/**
+ * Research projects. Each can carry a demo (video or interactive), collaborators,
+ * a sponsor, and the papers and talks that came out of it.
+ * Video examples:
+ *   demo: { video: { kind: 'youtube', id: 'abc123XYZ' } }      // from youtube.com/watch?v=<id>
+ *   demo: { video: { kind: 'file', src: 'videos/demo.mp4', poster: 'videos/demo.jpg' } }
+ */
 export const projects: Project[] = [
   {
     title: 'Tacit domain knowledge and AI-driven reinforcement learning for factory operations',
     status: 'Industry project, 2025 – present',
-    body: 'With the MME Industry 4.0/5.0 Institute and Prof. Sam Anand. A knowledge-capture and continual-learning framework with an agentic AI backbone for factory operations and process optimization, deployed as an end-to-end decision-support system for industrial blending. The 2026 phase integrates LLMs, GNNs, and Bayesian optimization with AR/VR for workforce training.',
-    notes: [
-      'PI on two MME Industry 4.0/5.0 Institute awards ($40,000 each, 2025 and 2026). Paper at NAMRC 54 (2026).',
-    ],
-    links: [
-      { label: 'Watch the demo', url: '#demos' },
-      { label: 'Prof. Sam Anand', url: 'https://researchdirectory.uc.edu/p/anands' },
-    ],
+    body: 'With the MME Industry 4.0/5.0 Institute and Prof. Sam Anand. A knowledge-capture and continual-learning framework with an agentic AI backbone for factory operations and process optimization, deployed as an end-to-end decision-support system for industrial blending: a GNN screens each lot order, XGBoost predicts quality specs, Bayesian optimization recommends material adjustments, and an LLM explains each decision with historical cases. The 2026 phase integrates LLMs, GNNs, and Bayesian optimization with AR/VR for workforce training.',
+    demo: {
+      video: { kind: 'file', src: 'videos/valvoline-demo.mp4', poster: 'videos/valvoline-demo.jpg' },
+      caption: 'Demo of the decision-support system. Component codes and quantities are blurred.',
+    },
+    notes: ['PI on two MME Industry 4.0/5.0 Institute awards ($40,000 each, 2025 and 2026).'],
+    links: [{ label: 'Prof. Sam Anand', url: 'https://researchdirectory.uc.edu/p/anands' }],
     sponsor: valvoline,
+    outputs: [
+      { kind: 'Paper', text: 'Aryal, M.R., Zeng, Y., Vadde, K., Wang, H., Piatt, E., Anand, S. Tacit Domain Knowledge Extraction and AI-Driven Learning Framework for Optimization of Factory Operations. NAMRC 54, 2026.' },
+    ],
   },
   {
-    title: 'AI for healthcare: human digital twins and neuro-oncology',
-    status: 'With UC Health',
-    body: 'Human digital twin modeling through data synthesis and generative AI, supporting personalized and adaptive decision making in healthcare. With Dr. Jonathan Forbes, I co-lead the development of the AI database for UC neuro-oncology, integrating multimodal imaging and longitudinal patient data.',
-    notes: [
-      'Talk: “AI-Driven Multimodal Imaging Integration: Bridging Radiology, Pathology, and Longitudinal Data for Predictive Oncology.” UC Health Neuro-Oncology Symposium, 2026.',
-    ],
+    title: 'Online change-point detection for distribution-valued data',
+    status: 'Statistical learning, ICML 2026',
+    body: 'Classical monitoring tracks summaries such as the mean and can miss changes in a distribution’s shape. We monitor streams in which every observation is itself a distribution, comparing the Wasserstein–Fréchet means of a reference window and the most recent window, with false-alarm and detection-delay guarantees. Try it below: inject a shape or variance change and watch the distributional detector raise an alarm while a mean-based chart stays quiet.',
+    demo: { interactive: 'change-point' },
     links: [],
+    collaborators: [xiaoyuChen],
+    outputs: [
+      { kind: 'Paper', text: 'Zeng, Y., Huang, Y., Chen, X. Beyond Euclidean Summaries: Online Change Point Detection for Distribution-Valued Data. ICML 2026.', url: 'https://arxiv.org/abs/2602.07252' },
+    ],
+  },
+  {
+    title: 'Riemannian ordinary least squares',
+    status: 'Statistics on manifolds, NeurIPS 2026',
+    body: 'Extends ordinary least squares, the workhorse of linear regression, to data that live on Riemannian manifolds rather than in Euclidean space.',
+    links: [],
+    collaborators: [xiaoyuChen],
+    outputs: [
+      { kind: 'Paper', text: 'Chen, X., Huang, Y., Zeng, Y. Riemannian Ordinary Least Squares. NeurIPS 2026.' },
+      { kind: 'Talk', text: 'Riemannian Ordinary Least Squares. INFORMS Annual Meeting, San Francisco, CA, 2026.' },
+    ],
   },
   {
     title: 'MultiphaseHUB: a living data hub for thermal and multiphase systems',
@@ -167,6 +176,18 @@ export const projects: Project[] = [
       { label: 'multiphasehub.org', url: 'https://www.multiphasehub.org/' },
       { label: 'Prof. Ying Sun', url: 'https://sites.google.com/view/ysunlab' },
       { label: 'Prof. Han Hu', url: 'https://engineering.uark.edu/mechanical-engineering/faculty/uid/hanhu/name/Han+Hu/' },
+    ],
+    outputs: [
+      { kind: 'Paper', text: 'Panda, J.P., Yan, L., Zeng, Y., Hu, H., Rishty, A., Plawsky, J., Sun, Y. Conditional Generative Modeling of Transient Flow Condensation Using Acoustic Signatures. AI Thermal Fluids, 100044, 2026.' },
+    ],
+  },
+  {
+    title: 'AI for healthcare: human digital twins and neuro-oncology',
+    status: 'With UC Health',
+    body: 'Human digital twin modeling through data synthesis and generative AI, supporting personalized and adaptive decision making in healthcare. With Dr. Jonathan Forbes, I co-lead the development of the AI database for UC neuro-oncology, integrating multimodal imaging and longitudinal patient data.',
+    links: [],
+    outputs: [
+      { kind: 'Talk', text: 'AI-Driven Multimodal Imaging Integration: Bridging Radiology, Pathology, and Longitudinal Data for Predictive Oncology. UC Health Neuro-Oncology Symposium, 2026.' },
     ],
   },
 ];
@@ -241,8 +262,8 @@ export const publications: Publication[] = [
   { type: 'journal', authors: 'Shohan, S., Zeng, Y.⁺, Chen, X., Jin, R., Shirwaiker, R.⁺', title: 'Investigating Dielectric Spectroscopy and Soft Sensing for Nondestructive Quality Assessment of Engineered Tissues', venue: 'Biosensors and Bioelectronics 216, 114286', year: 2022, url: 'https://www.sciencedirect.com/science/article/pii/S0956566322003268' },
   { type: 'journal', authors: 'Zeng, Y., Chen, X., Jin, R., Deng, X.', title: 'A Prediction-Oriented Optimal Design for Visualization Recommender Systems', venue: 'Statistical Theory and Related Fields 5(2), 134–148', year: 2021, url: 'https://www.tandfonline.com/doi/full/10.1080/24754269.2021.1905376' },
 
-  { type: 'conference', authors: 'Chen, X., Huang, Y., Zeng, Y.', title: 'Riemannian Ordinary Least Squares', venue: 'Conference on Neural Information Processing Systems (NeurIPS)', year: 2026 },
-  { type: 'conference', authors: 'Zeng, Y., Huang, Y., Chen, X.', title: 'Beyond Euclidean Summaries: Online Change Point Detection for Distribution-Valued Data', venue: 'International Conference on Machine Learning (ICML)', year: 2026, url: 'https://arxiv.org/abs/2602.07252' },
+  { type: 'conference', authors: 'Chen, X., Huang, Y., Zeng, Y.', title: 'Riemannian Ordinary Least Squares', venue: 'Conference on Neural Information Processing Systems (NeurIPS)', year: 2026, collab: xiaoyuChen },
+  { type: 'conference', authors: 'Zeng, Y., Huang, Y., Chen, X.', title: 'Beyond Euclidean Summaries: Online Change Point Detection for Distribution-Valued Data', venue: 'International Conference on Machine Learning (ICML)', year: 2026, url: 'https://arxiv.org/abs/2602.07252', collab: xiaoyuChen },
   { type: 'conference', authors: 'Aryal, M.R., Zeng, Y., Vadde, K., Wang, H., Piatt, E., Anand, S.', title: 'Tacit Domain Knowledge Extraction and AI-Driven Learning Framework for Optimization of Factory Operations', venue: '54th North American Manufacturing Research Conference (NAMRC 54)', year: 2026 },
   { type: 'conference', authors: 'Zhou, X., Zeng, Y., Jin, R., Lourentzou, I.', title: 'Hierarchical Dataset Selection for High-Quality Data Sharing', venue: 'AAAI Conference on Artificial Intelligence 40(34), 29026–29034', year: 2026 },
   { type: 'conference', authors: 'Zeng, Y., Lourentzou, I., Deng, X., Jin, R.', title: 'FAIR: Facilitating Artificial Intelligence Resilience in Manufacturing Industrial Internet', venue: 'IEEE International Conference on Cyber Security and Resilience (CSR)', year: 2025, url: scholar('Se3iqnhoufwC') },
