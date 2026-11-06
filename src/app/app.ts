@@ -55,6 +55,20 @@ export class App implements AfterViewInit {
     return text.split(/\*\*(.+?)\*\*/g).map((t, i) => ({ t, b: i % 2 === 1 })).filter((s) => s.t);
   }
 
+  /** Splits text on [label](url) markers into plain and link segments. */
+  protected linked(text: string) {
+    const out: { t: string; url?: string }[] = [];
+    const re = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+    let last = 0;
+    for (const m of text.matchAll(re)) {
+      if (m.index > last) out.push({ t: text.slice(last, m.index) });
+      out.push({ t: m[1], url: m[2] });
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) out.push({ t: text.slice(last) });
+    return out;
+  }
+
   protected toggleTheme() {
     const current =
       this.theme() ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');

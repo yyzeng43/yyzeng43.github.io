@@ -35,7 +35,7 @@ export interface Project {
   figure?: { src: string; alt: string; width: number; height: number; caption?: string };
   /** Demo shown inside the project: a video, or the built-in interactive change-point demo. */
   demo?: { video: Video; caption?: string } | { interactive: 'change-point' };
-  /** Short extra lines, e.g. funding. */
+  /** Short extra lines, e.g. funding. Inline links: [label](url). */
   notes?: string[];
   links: Link[];
   /** Project logo shown beside the entry. */
@@ -154,11 +154,11 @@ export const projects: Project[] = [
       video: { kind: 'file', src: 'videos/valvoline-demo.mp4', poster: 'videos/valvoline-demo.jpg' },
       caption: 'Demo of the decision-support system. Component codes and quantities are blurred.',
     },
-    notes: ['PI on two MME Industry 4.0/5.0 Institute awards (2025 and 2026), in collaboration with Prof. Sam Anand.'],
-    links: [{ label: 'Prof. Sam Anand', url: 'https://researchdirectory.uc.edu/p/anands' }],
+    notes: ['PI on two MME Industry 4.0/5.0 Institute awards (2025 and 2026), in collaboration with [Prof. Sam Anand](https://researchdirectory.uc.edu/p/anands).'],
+    links: [],
     sponsor: valvoline,
     outputs: [
-      { kind: 'Paper', text: 'Aryal, M.R., Zeng, Y., Vadde, K., Wang, H., Piatt, E., Anand, S. Tacit Domain Knowledge Extraction and AI-Driven Learning Framework for Optimization of Factory Operations. NAMRC 54, 2026.' },
+      { kind: 'Paper', text: 'Aryal, M.R., Zeng, Y., Vadde, K., Wang, H., Piatt, E., Anand, S. Tacit Domain Knowledge Extraction and AI-Driven Learning Framework for Optimization of Factory Operations. NAMRC 54, 2026.', url: 'https://www.sciencedirect.com/science/article/pii/S2213846326002166' },
     ],
   },
   {
@@ -278,13 +278,13 @@ export const publications: Publication[] = [
   { type: 'journal', authors: 'Panda, J.P., Yan, L., Zeng, Y., Hu, H., Rishty, A., Plawsky, J., Sun, Y.', title: 'Conditional Generative Modeling of Transient Flow Condensation Using Acoustic Signatures', venue: 'AI Thermal Fluids, 100044', year: 2026 },
   { type: 'journal', authors: 'Zeng, Y., Zhou, X., Chilukuri, P.K., Lourentzou, I., Jin, R.', title: 'High-Quality Dataset-Sharing and Trade Based on A Performance-Oriented Directed Graph Neural Network', venue: 'IEEE Transactions on Automation Science and Engineering 22, 15576–15587', year: 2025, url: 'https://doi.org/10.1109/TASE.2025.3561081' },
   { type: 'journal', authors: 'Zeng, Y., Chen, X., Jin, R.', title: 'Ensemble Active Learning by Contextual Bandits for AI Incubation in Manufacturing', venue: 'ACM Transactions on Intelligent Systems and Technology 15(1), 1–26', year: 2023, url: 'https://dl.acm.org/doi/abs/10.1145/3627821' },
-  { type: 'journal', authors: 'Chen, X., Zeng, Y., Kang, S., Jin, R.', title: 'INN: An Interpretable Neural Network for AI Incubation in Manufacturing', venue: 'ACM Transactions on Intelligent Systems and Technology 13(5), 1–23', year: 2022, url: 'https://dl.acm.org/doi/10.1145/3519313' },
+  { type: 'journal', authors: 'Chen, X., Zeng, Y., Kang, S., Jin, R.', title: 'INN: An Interpretable Neural Network for AI Incubation in Manufacturing', venue: 'ACM Transactions on Intelligent Systems and Technology 13(5), 1–23', year: 2022, url: 'https://dl.acm.org/doi/10.1145/3519313', code: 'https://github.com/XiaoyuChenPub/Interpretable-Neural-Network' },
   { type: 'journal', authors: 'Shohan, S., Zeng, Y.⁺, Chen, X., Jin, R., Shirwaiker, R.⁺', title: 'Investigating Dielectric Spectroscopy and Soft Sensing for Nondestructive Quality Assessment of Engineered Tissues', venue: 'Biosensors and Bioelectronics 216, 114286', year: 2022, url: 'https://www.sciencedirect.com/science/article/pii/S0956566322003268' },
   { type: 'journal', authors: 'Zeng, Y., Chen, X., Jin, R., Deng, X.', title: 'A Prediction-Oriented Optimal Design for Visualization Recommender Systems', venue: 'Statistical Theory and Related Fields 5(2), 134–148', year: 2021, url: 'https://www.tandfonline.com/doi/full/10.1080/24754269.2021.1905376' },
 
-  { type: 'conference', authors: 'Chen, X., Huang, Y., Zeng, Y.', title: 'Riemannian Ordinary Least Squares', venue: 'Conference on Neural Information Processing Systems (NeurIPS)', year: 2026 },
+  { type: 'conference', authors: 'Chen, X., Huang, Y., Zeng, Y.', title: 'Riemannian Ordinary Least Squares', venue: 'Conference on Neural Information Processing Systems (NeurIPS)', year: 2026, code: 'https://github.com/XiaoyuChenPub/ROLS' },
   { type: 'conference', authors: 'Zeng, Y., Huang, Y., Chen, X.', title: 'Beyond Euclidean Summaries: Online Change Point Detection for Distribution-Valued Data', venue: 'International Conference on Machine Learning (ICML)', year: 2026, url: 'https://arxiv.org/abs/2602.07252', code: 'https://github.com/yyzeng43/IDD-icml' },
-  { type: 'conference', authors: 'Aryal, M.R., Zeng, Y., Vadde, K., Wang, H., Piatt, E., Anand, S.', title: 'Tacit Domain Knowledge Extraction and AI-Driven Learning Framework for Optimization of Factory Operations', venue: '54th North American Manufacturing Research Conference (NAMRC 54)', year: 2026 },
+  { type: 'conference', authors: 'Aryal, M.R., Zeng, Y., Vadde, K., Wang, H., Piatt, E., Anand, S.', title: 'Tacit Domain Knowledge Extraction and AI-Driven Learning Framework for Optimization of Factory Operations', venue: '54th North American Manufacturing Research Conference (NAMRC 54)', year: 2026, url: 'https://www.sciencedirect.com/science/article/pii/S2213846326002166' },
   { type: 'conference', authors: 'Zhou, X., Zeng, Y., Jin, R., Lourentzou, I.', title: 'Hierarchical Dataset Selection for High-Quality Data Sharing', venue: 'AAAI Conference on Artificial Intelligence 40(34), 29026–29034', year: 2026 },
   { type: 'conference', authors: 'Zeng, Y., Lourentzou, I., Deng, X., Jin, R.', title: 'FAIR: Facilitating Artificial Intelligence Resilience in Manufacturing Industrial Internet', venue: 'IEEE International Conference on Cyber Security and Resilience (CSR)', year: 2025, url: scholar('Se3iqnhoufwC') },
   { type: 'conference', authors: 'Jin, X., Zeng, Y., Liu, H., Jin, R.', title: 'Contrastive Ensemble Active Learning for Data Quality Improvements for Resilient Manufacturing AI Model Prediction', venue: 'Workshop on Resilient AI for Manufacturing (RAiM) at IEEE ICDM', year: 2025, url: scholar('5nxA0vEk-isC') },
@@ -292,7 +292,7 @@ export const publications: Publication[] = [
   { type: 'conference', authors: 'Liu, H., Zeng, Y., Chilukuri, P.K., Jin, R.', title: 'High-Quality Privacy Preserving Text Data Sharing for Manufacturing Machine Learning Data Market', venue: 'IISE Annual Conference and Expo', year: 2025, url: scholar('UebtZRa9Y70C') },
   { type: 'conference', authors: 'Zeng, Y., Jin, R., Chilukuri, P.K.', title: 'Task-Aware Privacy-Preserving Dataset Valuation for Dataset Exchange in Manufacturing Industrial Internet', venue: 'IISE Annual Conference and Expo', year: 2024, url: scholar('MXK_kJrjxJIC') },
   { type: 'conference', authors: 'Zeng, Y., Thiyagarajan, P., Chan, B., Jin, R.', title: 'Synthetic Data Generation and Sampling for Online Training of DNNs in Manufacturing Supervised Learning Problems', venue: 'IEEE 19th International Conference on Automation Science and Engineering (CASE)', year: 2023, url: 'https://ieeexplore.ieee.org/document/10260330' },
-  { type: 'conference', authors: 'Zeng, Y., Wang, J.T., Chen, S., Just, H.A., Jin, R., Jia, R.', title: 'ModelPred: A Framework for Predicting Trained Model from Training Data', venue: 'IEEE Conference on Secure and Trustworthy Machine Learning (SaTML), acceptance rate 26.3%', year: 2023, url: 'https://ieeexplore.ieee.org/document/10136156' },
+  { type: 'conference', authors: 'Zeng, Y., Wang, J.T., Chen, S., Just, H.A., Jin, R., Jia, R.', title: 'ModelPred: A Framework for Predicting Trained Model from Training Data', venue: 'IEEE Conference on Secure and Trustworthy Machine Learning (SaTML), acceptance rate 26.3%', year: 2023, url: 'https://ieeexplore.ieee.org/document/10136156', code: 'https://github.com/yyzeng43/ModelPred' },
   { type: 'conference', authors: 'Shojaee, P., Zeng, Y., Wahed, M., Seth, A., Jin, R., Lourentzou, I.', title: 'Task-Driven Privacy-Preserving Data-Sharing Framework for Industrial Internet', venue: 'IEEE International Conference on Big Data', year: 2022, url: 'https://ieeexplore.ieee.org/document/10020861' },
   { type: 'conference', authors: 'Zeng, Y., Shojaee, P., Faruqui, S.H.A., Alaeddini, A., Jin, R.', title: 'Contextual Bandit Guided Data Farming for Deep Neural Networks in Manufacturing Industrial Internet', venue: 'IEEE 5th International Conference on Industrial Cyber-Physical Systems (ICPS)', year: 2022, url: 'https://ieeexplore.ieee.org/document/9816900' },
   { type: 'conference', authors: 'Shojaee, P., Zeng, Y., Chen, X., Jin, R., Deng, X., Zhang, C.', title: 'Deep Neural Network Pipelines for Multivariate Time Series Classification in Smart Manufacturing', venue: 'IEEE 4th International Conference on Industrial Cyber-Physical Systems (ICPS)', year: 2021, url: 'https://ieeexplore.ieee.org/document/9468245' },

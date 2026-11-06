@@ -15,7 +15,7 @@
   --wrap: 1080px;
   --measure: 680px; /* shared width of project text and figures, so their edges align */
   --gutter: 16px;
-  --label-col: 180px;
+  --label-col: 200px;
   color-scheme: light;
 }
 
@@ -194,7 +194,7 @@ img, video, svg { display: block; max-width: 100%; }
 .sec__h { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
 @media (min-width: 860px) {
   .sec { grid-template-columns: var(--label-col) 1fr; gap: 32px; padding-top: 80px; }
-  .sec__h { font-size: 1.05rem; padding-top: 4px; position: sticky; top: 80px; align-self: start; }
+  .sec__h { font-size: 1.4rem; line-height: 1.25; padding-top: 0; position: sticky; top: 80px; align-self: start; }
 }
 .sec__body { min-width: 0; border-top: 1px solid var(--rule); padding-top: 24px; }
 .sub { font-size: 0.95rem; font-weight: 600; margin: 28px 0 10px; }

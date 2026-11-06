@@ -115,7 +115,9 @@
               }
             </div>
           }
-          @for (n of p.notes ?? []; track $index) { <p class="item__note">{{ n }}</p> }
+          @for (n of p.notes ?? []; track $index) {
+            <p class="item__note">@for (seg of linked(n); track $index) {@if (seg.url) {<a [href]="seg.url" target="_blank" rel="noopener">{{ seg.t }}</a>} @else {{{ seg.t }}}}</p>
+          }
           @if (p.collaborators?.length) {
             <p class="collab">In collaboration with
               @for (cb of p.collaborators; track cb.url; let last = $last) {
