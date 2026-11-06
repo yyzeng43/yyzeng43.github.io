@@ -19,9 +19,6 @@
   <!-- Hero -->
   <div class="hero wrap" id="top">
     <div class="hero__text">
-      <a class="lab-logo" href="#about" [attr.aria-label]="c.about.lab.name">
-        <img [src]="c.about.lab.logo" [alt]="c.about.lab.name + ' logo'" width="217" height="92" />
-      </a>
       <h1 class="hero__name">{{ c.profile.name }}</h1>
       <p class="hero__role">{{ c.profile.role }}</p>
       <p class="hero__headline">{{ c.profile.headline }}</p>
@@ -36,11 +33,16 @@
         }
       </div>
     </div>
-    <picture class="hero__photo">
-      <source [srcset]="c.profile.photo + '.webp'" type="image/webp" />
-      <img [src]="c.profile.photo + '.jpg'" [alt]="'Portrait of ' + c.profile.name"
-           width="640" height="640" />
-    </picture>
+    <div class="hero__aside">
+      <picture class="hero__photo">
+        <source [srcset]="c.profile.photo + '.webp'" type="image/webp" />
+        <img [src]="c.profile.photo + '.jpg'" [alt]="'Portrait of ' + c.profile.name"
+             width="640" height="640" />
+      </picture>
+      <a class="lab-logo" href="#about" [attr.aria-label]="c.about.lab.name">
+        <img [src]="c.about.lab.logo" [alt]="c.about.lab.name + ' logo'" width="480" height="205" />
+      </a>
+    </div>
   </div>
 
   <div class="wrap">

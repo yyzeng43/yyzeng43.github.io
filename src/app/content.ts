@@ -85,7 +85,7 @@ export const highlights: string[] = [
 ];
 
 export const about = {
-  lab: { name: 'Data-Centric Intelligence Lab', logo: 'logos/dci-lab.png' },
+  lab: { name: 'Data-Centric Intelligence Lab', logo: 'logos/dci-lab.webp' },
   paragraphs: [
     'My research creates a data quality assurance paradigm so that AI models perform well in the manufacturing industrial internet. I have developed methods for data generation, acquisition, valuation, and sharing, with applications in additive manufacturing, bio-manufacturing, semiconductors, and IoT infrastructure design — combining statistical models, machine learning, and optimization.',
     'I also develop statistical learning methods for distribution-valued and manifold-valued data, and build resilient AI systems for the manufacturing industrial internet. Earlier work spans interpretable machine learning and supply chain optimization with operations research. I received my Ph.D. from the Grado Department of Industrial and Systems Engineering at Virginia Tech, advised by Prof. Ran Jin.',
