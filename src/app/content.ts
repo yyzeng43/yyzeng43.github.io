@@ -64,7 +64,7 @@ export const profile = {
   headline:
     'I build data-centric AI that stays reliable when real-world data is scarce, noisy, or sensitive.',
   summary:
-    'I lead the Data-Centric Intelligence Lab in the Department of Mechanical and Materials Engineering at the University of Cincinnati. My work spans data valuation and selection, active learning, synthetic data, privacy-preserving data sharing, and statistical learning for complex data — applied to manufacturing, robotics, semiconductors, and healthcare.',
+    'I lead the Data-Centric Intelligence Lab in the Department of Mechanical, Materials, and Industrial Engineering at the University of Cincinnati. My work spans data valuation and selection, active learning, synthetic data, privacy-preserving data sharing, and statistical learning for complex data — applied to manufacturing, robotics, semiconductors, and healthcare.',
   photo: 'img/yingyan-zeng',
   email: 'zengyy@ucmail.uc.edu',
   /** Put resume.pdf in the public/ folder, then set this to 'resume.pdf'. Empty hides the button. */
@@ -78,25 +78,32 @@ export const profile = {
 
 export const highlights: string[] = [
   'First-author paper at ICML 2026 on online change-point detection for distribution-valued data',
-  'Papers at NeurIPS 2026 (Riemannian ordinary least squares) and AAAI 2026',
+  'Papers at NeurIPS 2026 (Riemannian ordinary least squares) and AAAI 2026 (hierarchical dataset selection)',
   '19 peer-reviewed papers, including IEEE SaTML, IEEE T-ASE, and ACM TIST',
   '$80K in industry-institute funding as PI on two projects',
+  'Organizer of the first Workshop on Resilient AI for Manufacturing (RAiM) at IEEE ICDM 2025',
 ];
 
 export const about = {
   lab: { name: 'Data-Centric Intelligence Lab', logo: 'logos/dci-lab.png' },
   paragraphs: [
     'My research creates a data quality assurance paradigm so that AI models perform well in the manufacturing industrial internet. I have developed methods for data generation, acquisition, valuation, and sharing, with applications in additive manufacturing, bio-manufacturing, semiconductors, and IoT infrastructure design — combining statistical models, machine learning, and optimization.',
-    'I also work on interpretable machine learning, predictive modeling with statistical models, and supply chain optimization with operations research. I received my Ph.D. from the Grado Department of Industrial and Systems Engineering at Virginia Tech, advised by Prof. Ran Jin.',
+    'I also develop statistical learning methods for distribution-valued and manifold-valued data, and build resilient AI systems for the manufacturing industrial internet. Earlier work spans interpretable machine learning and supply chain optimization with operations research. I received my Ph.D. from the Grado Department of Industrial and Systems Engineering at Virginia Tech, advised by Prof. Ran Jin.',
   ],
   advisor: { label: 'Prof. Ran Jin', url: 'https://scholar.google.ca/citations?user=iFTR6Y8AAAAJ' },
   interests: [
     'Data quality',
-    'Data valuation',
-    'Data sharing and exchange',
+    'Privacy-preserving data valuation',
+    'Data sharing and generation',
+    'AI resilience',
+    'Distribution-valued statistical learning',
     'Manufacturing industrial internet',
-    'Healthcare systems',
-    'Statistical and machine learning',
+    'Healthcare AI',
+  ],
+  honors: [
+    { title: 'John Rudd Ph.D. Fellowship', when: '2022' },
+    { title: 'Finalist, INFORMS QSR Best Paper Competition', when: '2022' },
+    { title: 'Fabrycky Graduate Teaching Assistant', when: '2021–2022' },
   ],
   education: [
     { degree: 'Ph.D., Industrial and Systems Engineering', school: 'Virginia Tech', years: '2019–2024' },
@@ -131,8 +138,11 @@ export const demos: Demo[] = [
 export const projects: Project[] = [
   {
     title: 'Tacit domain knowledge and AI-driven reinforcement learning for factory operations',
-    status: 'Industry project, Apr 2025 – present',
-    body: 'With the MME Industry 4.0/5.0 Institute and Prof. Sam Anand. A knowledge-capture and continual-learning framework with an agentic AI backbone for factory operations and process optimization, deployed as an end-to-end decision-support system for industrial blending.',
+    status: 'Industry project, 2025 – present',
+    body: 'With the MME Industry 4.0/5.0 Institute and Prof. Sam Anand. A knowledge-capture and continual-learning framework with an agentic AI backbone for factory operations and process optimization, deployed as an end-to-end decision-support system for industrial blending. The 2026 phase integrates LLMs, GNNs, and Bayesian optimization with AR/VR for workforce training.',
+    notes: [
+      'PI on two MME Industry 4.0/5.0 Institute awards ($40,000 each, 2025 and 2026). Paper at NAMRC 54 (2026).',
+    ],
     links: [
       { label: 'Watch the demo', url: '#demos' },
       { label: 'Prof. Sam Anand', url: 'https://researchdirectory.uc.edu/p/anands' },
@@ -216,7 +226,7 @@ export const skills = [
   },
   {
     group: 'Tools',
-    items: ['Python', 'PyTorch', 'TensorFlow', 'scikit-learn', 'R', 'MATLAB', 'SQL', 'C++', 'Git', 'Docker', 'Gurobi', 'CPLEX'],
+    items: ['Python', 'PyTorch', 'TensorFlow', 'scikit-learn', 'R', 'MATLAB', 'SQL', 'C++', 'C#', 'Minitab', 'Git', 'Docker', 'Angular', 'Gurobi', 'CPLEX'],
   },
 ];
 
@@ -224,26 +234,45 @@ const scholar = (id: string) =>
   `https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9rM8HmwAAAAJ&citation_for_view=9rM8HmwAAAAJ:${id}`;
 
 export const publications: Publication[] = [
-  { type: 'preprint', authors: 'Zeng, Y., Huang, Y., Chen, X.', title: 'Beyond Euclidean Summaries: Online Change Point Detection for Distribution-Valued Data', venue: 'arXiv preprint arXiv:2602.07252', year: 2026, url: 'https://arxiv.org/abs/2602.07252' },
-
-  { type: 'journal', authors: 'Zeng, Y., Zhou, X., Chilukuri, P., Lourentzou, I., Jin, R.', title: 'High-Quality Dataset-Sharing and Trade Based on A Performance-Oriented Directed Graph Neural Network', venue: 'IEEE Transactions on Automation Science and Engineering', year: 2025, url: 'https://doi.org/10.1109/TASE.2025.3561081' },
+  { type: 'journal', authors: 'Panda, J.P., Yan, L., Zeng, Y., Hu, H., Rishty, A., Plawsky, J., Sun, Y.', title: 'Conditional Generative Modeling of Transient Flow Condensation Using Acoustic Signatures', venue: 'AI Thermal Fluids, 100044', year: 2026 },
+  { type: 'journal', authors: 'Zeng, Y., Zhou, X., Chilukuri, P.K., Lourentzou, I., Jin, R.', title: 'High-Quality Dataset-Sharing and Trade Based on A Performance-Oriented Directed Graph Neural Network', venue: 'IEEE Transactions on Automation Science and Engineering 22, 15576–15587', year: 2025, url: 'https://doi.org/10.1109/TASE.2025.3561081' },
   { type: 'journal', authors: 'Zeng, Y., Chen, X., Jin, R.', title: 'Ensemble Active Learning by Contextual Bandits for AI Incubation in Manufacturing', venue: 'ACM Transactions on Intelligent Systems and Technology 15(1), 1–26', year: 2023, url: 'https://dl.acm.org/doi/abs/10.1145/3627821' },
   { type: 'journal', authors: 'Chen, X., Zeng, Y., Kang, S., Jin, R.', title: 'INN: An Interpretable Neural Network for AI Incubation in Manufacturing', venue: 'ACM Transactions on Intelligent Systems and Technology 13(5), 1–23', year: 2022, url: 'https://dl.acm.org/doi/10.1145/3519313' },
   { type: 'journal', authors: 'Shohan, S., Zeng, Y.⁺, Chen, X., Jin, R., Shirwaiker, R.⁺', title: 'Investigating Dielectric Spectroscopy and Soft Sensing for Nondestructive Quality Assessment of Engineered Tissues', venue: 'Biosensors and Bioelectronics 216, 114286', year: 2022, url: 'https://www.sciencedirect.com/science/article/pii/S0956566322003268' },
   { type: 'journal', authors: 'Zeng, Y., Chen, X., Jin, R., Deng, X.', title: 'A Prediction-Oriented Optimal Design for Visualization Recommender Systems', venue: 'Statistical Theory and Related Fields 5(2), 134–148', year: 2021, url: 'https://www.tandfonline.com/doi/full/10.1080/24754269.2021.1905376' },
 
+  { type: 'conference', authors: 'Chen, X., Huang, Y., Zeng, Y.', title: 'Riemannian Ordinary Least Squares', venue: 'Conference on Neural Information Processing Systems (NeurIPS)', year: 2026 },
+  { type: 'conference', authors: 'Zeng, Y., Huang, Y., Chen, X.', title: 'Beyond Euclidean Summaries: Online Change Point Detection for Distribution-Valued Data', venue: 'International Conference on Machine Learning (ICML)', year: 2026, url: 'https://arxiv.org/abs/2602.07252' },
+  { type: 'conference', authors: 'Aryal, M.R., Zeng, Y., Vadde, K., Wang, H., Piatt, E., Anand, S.', title: 'Tacit Domain Knowledge Extraction and AI-Driven Learning Framework for Optimization of Factory Operations', venue: '54th North American Manufacturing Research Conference (NAMRC 54)', year: 2026 },
+  { type: 'conference', authors: 'Zhou, X., Zeng, Y., Jin, R., Lourentzou, I.', title: 'Hierarchical Dataset Selection for High-Quality Data Sharing', venue: 'AAAI Conference on Artificial Intelligence 40(34), 29026–29034', year: 2026 },
   { type: 'conference', authors: 'Zeng, Y., Lourentzou, I., Deng, X., Jin, R.', title: 'FAIR: Facilitating Artificial Intelligence Resilience in Manufacturing Industrial Internet', venue: 'IEEE International Conference on Cyber Security and Resilience (CSR)', year: 2025, url: scholar('Se3iqnhoufwC') },
-  { type: 'conference', authors: 'Jin, X., Zeng, Y., Liu, H., Jin, R.', title: 'Contrastive Ensemble Active Learning for Data Quality Improvements for Resilient Manufacturing AI Model Prediction', venue: 'IEEE International Conference on Data Mining (ICDM), Resilient AI Workshop', year: 2025, url: scholar('5nxA0vEk-isC') },
+  { type: 'conference', authors: 'Jin, X., Zeng, Y., Liu, H., Jin, R.', title: 'Contrastive Ensemble Active Learning for Data Quality Improvements for Resilient Manufacturing AI Model Prediction', venue: 'Workshop on Resilient AI for Manufacturing (RAiM) at IEEE ICDM', year: 2025, url: scholar('5nxA0vEk-isC') },
   { type: 'conference', authors: 'Liu, H., Qiao, G., Piliptchak, P., Moore, J., Sawyer, D., Zeng, Y., Jin, R.', title: 'DCAF: Dynamic Cross-Attention Feature Fusion from Robotic Anomaly Detection to Position Accuracy Modeling', venue: 'IEEE 21st International Conference on Automation Science and Engineering (CASE)', year: 2025, url: scholar('hqOjcs7Dif8C') },
-  { type: 'conference', authors: 'Liu, H., Zeng, Y., Chilukuri, P., Jin, R.', title: 'High-Quality Privacy Preserving Text Data Sharing for Manufacturing Machine Learning Data Market', venue: 'IISE Annual Conference and Expo', year: 2025, url: scholar('UebtZRa9Y70C') },
+  { type: 'conference', authors: 'Liu, H., Zeng, Y., Chilukuri, P.K., Jin, R.', title: 'High-Quality Privacy Preserving Text Data Sharing for Manufacturing Machine Learning Data Market', venue: 'IISE Annual Conference and Expo', year: 2025, url: scholar('UebtZRa9Y70C') },
   { type: 'conference', authors: 'Zeng, Y., Jin, R., Chilukuri, P.K.', title: 'Task-Aware Privacy-Preserving Dataset Valuation for Dataset Exchange in Manufacturing Industrial Internet', venue: 'IISE Annual Conference and Expo', year: 2024, url: scholar('MXK_kJrjxJIC') },
   { type: 'conference', authors: 'Zeng, Y., Thiyagarajan, P., Chan, B., Jin, R.', title: 'Synthetic Data Generation and Sampling for Online Training of DNNs in Manufacturing Supervised Learning Problems', venue: 'IEEE 19th International Conference on Automation Science and Engineering (CASE)', year: 2023, url: 'https://ieeexplore.ieee.org/document/10260330' },
-  { type: 'conference', authors: 'Zeng, Y., Wang, J.T., Chen, S., Just, H.A., Jin, R., Jia, R.', title: 'ModelPred: A Framework for Predicting Trained Model from Training Data', venue: 'IEEE Conference on Secure and Trustworthy Machine Learning (SaTML)', year: 2023, url: 'https://ieeexplore.ieee.org/document/10136156' },
+  { type: 'conference', authors: 'Zeng, Y., Wang, J.T., Chen, S., Just, H.A., Jin, R., Jia, R.', title: 'ModelPred: A Framework for Predicting Trained Model from Training Data', venue: 'IEEE Conference on Secure and Trustworthy Machine Learning (SaTML), acceptance rate 26.3%', year: 2023, url: 'https://ieeexplore.ieee.org/document/10136156' },
   { type: 'conference', authors: 'Shojaee, P., Zeng, Y., Wahed, M., Seth, A., Jin, R., Lourentzou, I.', title: 'Task-Driven Privacy-Preserving Data-Sharing Framework for Industrial Internet', venue: 'IEEE International Conference on Big Data', year: 2022, url: 'https://ieeexplore.ieee.org/document/10020861' },
   { type: 'conference', authors: 'Zeng, Y., Shojaee, P., Faruqui, S.H.A., Alaeddini, A., Jin, R.', title: 'Contextual Bandit Guided Data Farming for Deep Neural Networks in Manufacturing Industrial Internet', venue: 'IEEE 5th International Conference on Industrial Cyber-Physical Systems (ICPS)', year: 2022, url: 'https://ieeexplore.ieee.org/document/9816900' },
   { type: 'conference', authors: 'Shojaee, P., Zeng, Y., Chen, X., Jin, R., Deng, X., Zhang, C.', title: 'Deep Neural Network Pipelines for Multivariate Time Series Classification in Smart Manufacturing', venue: 'IEEE 4th International Conference on Industrial Cyber-Physical Systems (ICPS)', year: 2021, url: 'https://ieeexplore.ieee.org/document/9468245' },
 
+  { type: 'preprint', authors: 'Liu, H., Jin, X., Zeng, Y., Jin, R.', title: 'Cross-Attention Guided Data Sharing for Knowledge Transfer in Robotic AI Systems', venue: 'Under review at IEEE Transactions on Automation Science and Engineering', year: 2026 },
+
   { type: 'thesis', authors: 'Zeng, Y.', title: 'Data Exchange for Artificial Intelligence Incubation in Manufacturing Industrial Internet', venue: 'Ph.D. Dissertation, Virginia Polytechnic Institute and State University', year: 2024, url: scholar('roLk4NBRz8UC') },
+];
+
+export const talks = [
+  { title: 'AI-Driven Multimodal Imaging Integration: Bridging Radiology, Pathology, and Longitudinal Data for Predictive Oncology', venue: 'UC Health Neuro-Oncology Symposium', year: 2026 },
+  { title: 'Riemannian Ordinary Least Squares', venue: 'INFORMS Annual Meeting, San Francisco, CA', year: 2026 },
+  { title: 'Class-aware Latent Attention Replay (CLAR): Class Incremental Hazard Diagnosis for Resilient AI in the Manufacturing Industrial Internet', venue: 'INFORMS Annual Meeting, San Francisco, CA', year: 2026 },
+  { title: 'Statistical Quality Control with Distribution-Valued Samples', venue: 'INFORMS Annual Meeting, Atlanta, GA', year: 2025 },
+  { title: 'Data Quality Assurance for AI Incubation in Manufacturing Industrial Internet', venue: 'MME Distinguished Seminar Series, University of Cincinnati', year: 2024 },
+  { title: 'Multitask Process Adjustment for Similar-but-non-identical Products and Processes in Manufacturing Industrial Internet', venue: 'INFORMS Annual Meeting, Seattle, WA', year: 2024 },
+  { title: 'Investigating Dielectric Spectroscopy and Soft Sensing for Nondestructive Quality Assessment of Engineered Tissues', venue: 'INFORMS Annual Meeting, Phoenix, AZ', year: 2023 },
+  { title: 'ModelPred: A Framework for Predicting Trained Model from Training Data', venue: 'IEEE SaTML, Raleigh, NC', year: 2023 },
+  { title: 'Ensemble Active Learning by Contextual Bandits for AI Incubation in Manufacturing', venue: 'INFORMS Annual Meeting, Indianapolis, IN', year: 2022 },
+  { title: 'Contextual Bandit Guided Data Farming for Deep Neural Networks in Manufacturing Industrial Internet', venue: 'IEEE ICPS, Coventry, UK', year: 2022 },
+  { title: 'A Prediction-Oriented Optimal Design for Visualization Recommender Systems', venue: 'INFORMS Annual Meeting', year: 2021 },
 ];
 
 export const group = {
@@ -256,8 +285,10 @@ export const group = {
 
 export const teaching = {
   instructor: [
-    { course: 'Introduction to Industry 5.0', when: 'Spring 2026' },
-    { course: 'ISE 2024, Probability Foundations for ISE', when: 'Summer 2023' },
+    { course: 'ISE 5115, Data Analytics II', when: 'Fall 2026, University of Cincinnati' },
+    { course: 'ISE 6151, Introduction to Industry 5.0', when: 'Spring 2026, University of Cincinnati' },
+    { course: 'ISE 2010, Data Analytics I', when: 'Summer 2025 and 2026, University of Cincinnati' },
+    { course: 'ISE 2024, Probability Foundations for ISE', when: 'Summer 2023, Virginia Tech' },
   ],
   ta: [
     { course: 'ISE 2214, Manufacturing Processes Laboratory', when: 'Fall 2021, Spring 2022' },
@@ -265,22 +296,37 @@ export const teaching = {
     { course: 'ISE 3124, Facilities Planning and Material Handling', when: 'Summer 2021' },
     { course: 'ISE 4404, Statistical Quality Control', when: 'Fall 2020' },
   ],
+  outreach:
+    'NSF SEED program workshop “Artificial Intelligence in Manufacturing”: a two-day workshop introducing advanced manufacturing and machine learning to high school students from underrepresented groups, Pathways for Future Engineers at Virginia Tech, 2023.',
 };
 
 export const service = {
   roles: [
-    { role: 'Program Committee', org: 'IEEE Big Data 2026', when: 'Sep–Nov 2025' },
+    { role: 'Fund Raiser Committee', org: 'INFORMS Quality, Statistics, and Reliability (QSR) Section', when: 'May 2026 – present' },
+    { role: 'Program Committee', org: 'IEEE BigData 2026', when: 'Sep 2025 – present' },
     { role: 'Workshop Committee', org: 'ASME Working Group on Robotic Arm Accuracy', when: 'Jul 2025 – present' },
+    { role: 'Graduate Recruiting Committee', org: 'College of Engineering and Applied Science, University of Cincinnati', when: 'Aug 2024 – present' },
     { role: 'Technical Committee', org: 'IEEE RAS on Digital Manufacturing and Human-centered Automation', when: 'Sep 2023 – present' },
-    { role: 'VP Marketing and Finance', org: 'INFORMS VT Student Chapter', when: 'Aug 2020 – May 2023' },
+    { role: 'VP Marketing', org: 'INFORMS VT Student Chapter', when: 'Aug 2022 – May 2023' },
+    { role: 'Treasurer', org: 'INFORMS VT Student Chapter', when: 'Aug 2020 – Aug 2022' },
+  ],
+  organizing: [
+    { role: 'Organizer, First International Workshop on Resilient Artificial Intelligence for Manufacturing (RAiM)', when: 'IEEE ICDM 2025, Washington, D.C.' },
+    { role: 'Session chair, “Data Analytics with Manifold-valued Random Objects”', when: 'INFORMS Annual Meeting 2026, San Francisco' },
+    { role: 'Session chair, “Statistical Models with Manifold-valued Random Objects”', when: 'INFORMS Annual Meeting 2025, Atlanta' },
+    { role: 'Session chair, “Computation Services and Data Quality in Manufacturing Industrial Internet”', when: 'INFORMS Annual Meeting 2024, Seattle' },
+    { role: 'Session chair, “Computation Services in Cyber-Physical Systems”', when: 'INFORMS Annual Meeting 2023, Phoenix' },
+    { role: 'Session co-chair, “Computation Services in Manufacturing Industrial Internet”', when: 'INFORMS Annual Meeting 2022, Indianapolis' },
   ],
   reviewer: [
-    'IEEE Transactions on Automation Science and Engineering',
     'IISE Transactions',
-    'INFORMS Journal on Computing',
-    'ASME Journal of Computing and Information Science in Engineering',
+    'IEEE Transactions on Industrial Informatics',
+    'IEEE Transactions on Automation Science and Engineering',
     'Journal of Manufacturing Systems',
     'Journal of Manufacturing Science and Engineering',
+    'ASME Journal of Computing and Information Science in Engineering',
+    'INFORMS Journal on Computing',
     'Journal of Statistical Computation and Simulation',
   ],
+  memberships: ['INFORMS (2019–present)', 'IEEE (2021–present)'],
 };

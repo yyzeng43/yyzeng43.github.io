@@ -312,3 +312,11 @@ a.pub__title:hover { color: var(--cobalt); text-decoration: underline; }
   .item__logo { grid-column: 2; grid-row: 1 / span 6; align-self: start; width: 112px; margin: 0; }
 }
 .item__note { margin-top: 10px; font-size: 0.92rem; color: var(--muted); max-width: 66ch; padding-left: 12px; border-left: 2px solid var(--teal); }
+
+/* ---------- Talks ---------- */
+.talks-h { margin-top: 48px; }
+.talks { display: grid; gap: 14px; max-width: 76ch; }
+.talk { display: grid; grid-template-columns: 48px 1fr; gap: 12px; font-size: 0.95rem; line-height: 1.45; }
+.talk__year { color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 600; }
+.talk__title { font-family: var(--serif); font-size: 1rem; }
+.outreach { font-size: 0.95rem; max-width: 60ch; }

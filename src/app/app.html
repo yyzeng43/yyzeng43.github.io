@@ -70,6 +70,12 @@
                 <span class="muted">{{ e.school }}, {{ e.years }}</span></li>
             }
           </ul>
+          <h3 class="sub">Honors</h3>
+          <ul class="plain">
+            @for (h of c.about.honors; track h.title) {
+              <li>{{ h.title }}<br /><span class="muted">{{ h.when }}</span></li>
+            }
+          </ul>
         </div>
       </div>
     </div>
@@ -143,6 +149,16 @@
     <div class="sec__body">
       <app-publication-list [items]="c.publications" />
       <p class="note">Full list on <a [href]="c.profile.links[0].url" target="_blank" rel="noopener">Google Scholar</a>.</p>
+
+      <h3 class="sub talks-h">Talks</h3>
+      <ol class="talks">
+        @for (t of c.talks; track t.title) {
+          <li class="talk">
+            <span class="talk__year">{{ t.year }}</span>
+            <span><span class="talk__title">{{ t.title }}</span><br /><span class="muted">{{ t.venue }}</span></span>
+          </li>
+        }
+      </ol>
     </div>
   </section>
 
@@ -193,6 +209,8 @@
               <li><span class="strong">{{ s.name }}</span><br /><span class="muted">{{ s.focus }}</span></li>
             }
           </ul>
+          <h3 class="sub">Outreach</h3>
+          <p class="outreach">{{ c.teaching.outreach }}</p>
         </div>
       </div>
     </div>
@@ -207,8 +225,16 @@
           <li><span class="strong">{{ s.role }}</span>, {{ s.org }}<br /><span class="muted">{{ s.when }}</span></li>
         }
       </ul>
+      <h3 class="sub">Workshops and sessions</h3>
+      <ul class="plain">
+        @for (o of c.service.organizing; track o.role) {
+          <li>{{ o.role }}<br /><span class="muted">{{ o.when }}</span></li>
+        }
+      </ul>
       <h3 class="sub">Reviewer</h3>
       <p class="muted reviewer">{{ c.service.reviewer.join('; ') }}</p>
+      <h3 class="sub">Memberships</h3>
+      <p class="muted">{{ c.service.memberships.join('; ') }}</p>
     </div>
   </section>
 </main>

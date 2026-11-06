@@ -36,9 +36,7 @@ const LABELS: Record<Filter, string> = {
                 <span class="pub__title">{{ p.title }}</span>
               }
               <span class="pub__authors">
-                @for (part of splitAuthors(p.authors); track $index) {
-                  @if (part.me) { <strong>{{ part.text }}</strong> } @else { {{ part.text }} }
-                }
+                @for (part of splitAuthors(p.authors); track $index) {@if (part.me) {<strong>{{ part.text }}</strong>} @else {{{ part.text }}}}
               </span>
               <span class="pub__venue">{{ p.venue }}</span>
             </li>
