@@ -128,6 +128,12 @@
               }
             </p>
           }
+          @if (p.poster; as ps) {
+            <a class="poster" [href]="ps.href" target="_blank" rel="noopener">
+              <img [src]="ps.thumb" alt="" width="800" height="600" loading="lazy" />
+              <span>{{ ps.label }}</span>
+            </a>
+          }
           @if (p.outputs?.length) {
             <ul class="outputs">
               @for (o of p.outputs; track o.text) {

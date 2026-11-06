@@ -40,6 +40,8 @@ export interface Project {
   logo?: { src: string; alt: string; url?: string };
   sponsor?: Sponsor;
   collaborators?: Link[];
+  /** Poster thumbnail that opens the full poster. */
+  poster?: { thumb: string; href: string; label: string };
   /** Papers and talks from this project, listed at the end. */
   outputs?: Output[];
 }
@@ -152,6 +154,7 @@ export const projects: Project[] = [
     demo: { interactive: 'change-point' },
     links: [],
     collaborators: [xiaoyuChen],
+    poster: { thumb: 'posters/icml2026-idd-poster.webp', href: 'posters/icml2026-idd-poster.pdf', label: 'ICML 2026 poster (PDF)' },
     outputs: [
       { kind: 'Paper', text: 'Zeng, Y., Huang, Y., Chen, X. Beyond Euclidean Summaries: Online Change Point Detection for Distribution-Valued Data. ICML 2026.', url: 'https://arxiv.org/abs/2602.07252' },
       { kind: 'Code', text: 'github.com/yyzeng43/IDD-icml', url: 'https://github.com/yyzeng43/IDD-icml' },
@@ -171,7 +174,7 @@ export const projects: Project[] = [
   {
     title: 'MultiphaseHUB: a living data hub for thermal and multiphase systems',
     status: 'Multi-university collaboration',
-    body: 'A collaborative hub where researchers share, search, and download curated multiphase transport datasets from experiments and simulations, with versioned releases, rich metadata, and an agentic tool that turns papers into structured records. My work focuses on data quality, data valuation, and data sharing. With Prof. Ying Sun and Prof. Han Hu.',
+    body: 'A community infrastructure for organizing, discovering, and reusing multiphase transport data from experiments and simulations. It links externally hosted datasets with modality-specific metadata, publications, analysis tools, and reuse boundaries. We develop LLM-assisted metadata extraction, an agentic literature analyzer that pulls quantitative values from figures, and task-aware compression guided by the quantities downstream analyses need. With Prof. Ying Sun and Prof. Han Hu.',
     logo: { src: 'logos/multiphasehub.png', alt: 'MultiphaseHUB logo', url: 'https://www.multiphasehub.org/' },
     links: [
       { label: 'multiphasehub.org', url: 'https://www.multiphasehub.org/' },
@@ -179,16 +182,17 @@ export const projects: Project[] = [
       { label: 'Prof. Han Hu', url: 'https://engineering.uark.edu/mechanical-engineering/faculty/uid/hanhu/name/Han+Hu/' },
     ],
     outputs: [
-      { kind: 'Preprint', text: 'MultiphaseHUB preprint, arXiv:2610.28644, 2026.', url: 'https://arxiv.org/abs/2610.28644' },
+      { kind: 'Preprint', text: 'Zeng, Y., Panda, J.P., Mahanty, A., Hu, H., Xu, D., Sun, Y. MultiphaseHUB for Evidence-Grounded Metadata Curation and Task-Aware Compression of Multiphase Data. arXiv:2610.28644, 2026.', url: 'https://arxiv.org/abs/2610.28644' },
       { kind: 'Paper', text: 'Panda, J.P., Yan, L., Zeng, Y., Hu, H., Rishty, A., Plawsky, J., Sun, Y. Conditional Generative Modeling of Transient Flow Condensation Using Acoustic Signatures. AI Thermal Fluids, 100044, 2026.' },
     ],
   },
   {
     title: 'AI for healthcare: human digital twins and neuro-oncology',
     status: 'With UC Health',
-    body: 'Human digital twin modeling through data synthesis and generative AI, supporting personalized and adaptive decision making in healthcare. With Dr. Jonathan Forbes, I co-lead the development of the AI database for UC neuro-oncology, integrating multimodal imaging and longitudinal patient data.',
+    body: 'Human digital twin modeling through data synthesis and generative AI, supporting personalized and adaptive decision making in healthcare. With Dr. Jonathan Forbes, I co-lead the development of the AI database for UC neuro-oncology, integrating multimodal imaging and longitudinal patient data. We also develop cross-contrast super-resolution that restores anisotropic brain T2w MRI for sharper 3D analysis and better downstream tumor segmentation.',
     links: [],
     outputs: [
+      { kind: 'Preprint', text: 'Shen, M., Wang, H., Trivedi, M., Wang, T.J., Xu, Y., Zeng, Y., Yuan, Y. Anatomically Consistent Cross-Contrast Super-Resolution of Anisotropic Brain T2w MRI. arXiv:2608.08401, 2026.', url: 'https://arxiv.org/abs/2608.08401' },
       { kind: 'Talk', text: 'AI-Driven Multimodal Imaging Integration: Bridging Radiology, Pathology, and Longitudinal Data for Predictive Oncology. UC Health Neuro-Oncology Symposium, 2026.' },
     ],
   },
@@ -279,6 +283,8 @@ export const publications: Publication[] = [
   { type: 'conference', authors: 'Zeng, Y., Shojaee, P., Faruqui, S.H.A., Alaeddini, A., Jin, R.', title: 'Contextual Bandit Guided Data Farming for Deep Neural Networks in Manufacturing Industrial Internet', venue: 'IEEE 5th International Conference on Industrial Cyber-Physical Systems (ICPS)', year: 2022, url: 'https://ieeexplore.ieee.org/document/9816900' },
   { type: 'conference', authors: 'Shojaee, P., Zeng, Y., Chen, X., Jin, R., Deng, X., Zhang, C.', title: 'Deep Neural Network Pipelines for Multivariate Time Series Classification in Smart Manufacturing', venue: 'IEEE 4th International Conference on Industrial Cyber-Physical Systems (ICPS)', year: 2021, url: 'https://ieeexplore.ieee.org/document/9468245' },
 
+  { type: 'preprint', authors: 'Zeng, Y., Panda, J.P., Mahanty, A., Hu, H., Xu, D., Sun, Y.', title: 'MultiphaseHUB for Evidence-Grounded Metadata Curation and Task-Aware Compression of Multiphase Data', venue: 'arXiv preprint arXiv:2610.28644', year: 2026, url: 'https://arxiv.org/abs/2610.28644' },
+  { type: 'preprint', authors: 'Shen, M., Wang, H., Trivedi, M., Wang, T.J., Xu, Y., Zeng, Y., Yuan, Y.', title: 'Anatomically Consistent Cross-Contrast Super-Resolution of Anisotropic Brain T2w MRI', venue: 'arXiv preprint arXiv:2608.08401', year: 2026, url: 'https://arxiv.org/abs/2608.08401' },
   { type: 'preprint', authors: 'Liu, H., Jin, X., Zeng, Y., Jin, R.', title: 'Cross-Attention Guided Data Sharing for Knowledge Transfer in Robotic AI Systems', venue: 'Under review at IEEE Transactions on Automation Science and Engineering', year: 2026 },
 
   { type: 'thesis', authors: 'Zeng, Y.', title: 'Data Exchange for Artificial Intelligence Incubation in Manufacturing Industrial Internet', venue: 'Ph.D. Dissertation, Virginia Polytechnic Institute and State University', year: 2024, url: scholar('roLk4NBRz8UC') },
