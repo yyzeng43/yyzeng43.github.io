@@ -52,6 +52,7 @@
         @for (h of c.highlights; track h) { <li>{{ h }}</li> }
       </ul>
       <div class="prose">
+        <img class="lab-logo" [src]="c.about.lab.logo" [alt]="c.about.lab.name + ' logo'" width="217" height="92" />
         @for (p of c.about.paragraphs; track $index) { <p>{{ p }}</p> }
       </div>
       <div class="split">
@@ -89,13 +90,25 @@
     <h2 class="sec__h" id="projects-h">Projects</h2>
     <div class="sec__body">
       @for (p of c.projects; track p.title) {
-        <article class="item">
+        <article class="item" [class.item--logo]="p.logo">
+          @if (p.logo; as lg) {
+            <a class="item__logo" [href]="lg.url" target="_blank" rel="noopener"><img [src]="lg.src" [alt]="lg.alt" loading="lazy" /></a>
+          }
           <h3 class="item__title">{{ p.title }}</h3>
           <p class="item__meta">{{ p.status }}</p>
           <p class="item__body">{{ p.body }}</p>
+          @for (n of p.notes ?? []; track $index) { <p class="item__note">{{ n }}</p> }
+          @if (p.sponsor; as sp) {
+            <p class="sponsor">
+              <span>Sponsored by</span>
+              <a class="sponsor__logo" [href]="sp.url" target="_blank" rel="noopener"><img [src]="sp.logo" [alt]="sp.name" loading="lazy" /></a>
+            </p>
+          }
           @if (p.links.length) {
             <p class="item__links">
-              @for (l of p.links; track l.url) { <a [href]="l.url" target="_blank" rel="noopener">{{ l.label }}</a> }
+              @for (l of p.links; track l.url) {
+                <a [href]="l.url" [attr.target]="l.url.startsWith('#') ? null : '_blank'" rel="noopener">{{ l.label }}</a>
+              }
             </p>
           }
         </article>

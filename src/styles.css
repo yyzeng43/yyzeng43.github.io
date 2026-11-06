@@ -289,3 +289,26 @@ a.pub__title:hover { color: var(--cobalt); text-decoration: underline; }
 /* ---------- Footer ---------- */
 .foot { margin-top: 96px; padding-top: 28px; padding-bottom: 48px; border-top: 1px solid var(--rule); font-size: 0.92rem; display: grid; gap: 8px; }
 .foot p:first-child { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+
+/* ---------- Logos ---------- */
+.lab-logo { width: 217px; height: auto; border-radius: 6px; margin-bottom: 20px; }
+
+.sponsor { display: flex; align-items: center; gap: 10px; margin-top: 12px; font-size: 0.85rem; color: var(--muted); }
+.sponsor__logo {
+  display: inline-flex; align-items: center; padding: 5px 10px; border-radius: 6px;
+  background: #fff; border: 1px solid var(--rule);
+}
+.sponsor__logo img { height: 30px; width: auto; }
+
+.item--logo { display: grid; grid-template-columns: 1fr; }
+.item__logo {
+  display: inline-flex; width: 96px; padding: 6px; border-radius: 8px; background: #fff;
+  border: 1px solid var(--rule); margin-bottom: 12px;
+}
+.item__logo img { width: 100%; height: auto; }
+@media (min-width: 720px) {
+  .item--logo { grid-template-columns: 1fr 112px; column-gap: 24px; }
+  .item--logo > :not(.item__logo) { grid-column: 1; }
+  .item__logo { grid-column: 2; grid-row: 1 / span 6; align-self: start; width: 112px; margin: 0; }
+}
+.item__note { margin-top: 10px; font-size: 0.92rem; color: var(--muted); max-width: 66ch; padding-left: 12px; border-left: 2px solid var(--teal); }

@@ -37,6 +37,16 @@ import { Demo } from './content';
       </div>
       <h3 class="demo__title">{{ demo().title }}</h3>
       <p class="demo__desc">{{ demo().description }}</p>
+      @if (demo().sponsor; as sp) {
+        <p class="sponsor">
+          <span>Sponsored by</span>
+          @if (sp.url) {
+            <a class="sponsor__logo" [href]="sp.url" target="_blank" rel="noopener"><img [src]="sp.logo" [alt]="sp.name" loading="lazy" /></a>
+          } @else {
+            <span class="sponsor__logo"><img [src]="sp.logo" [alt]="sp.name" loading="lazy" /></span>
+          }
+        </p>
+      }
       @if (demo().links?.length) {
         <p class="demo__links">
           @for (l of demo().links; track l.url) { <a [href]="l.url" target="_blank" rel="noopener">{{ l.label }}</a> }

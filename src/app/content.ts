@@ -18,6 +18,26 @@ export interface Demo {
     /** A file in public/videos, e.g. 'videos/tacit-knowledge.mp4'. Keep files under ~50 MB. */
     | { kind: 'file'; src: string; poster?: string };
   links?: Link[];
+  /** Shown under the description as "Sponsored by <logo>". */
+  sponsor?: Sponsor;
+}
+
+export interface Sponsor {
+  name: string;
+  logo: string;
+  url?: string;
+}
+
+export interface Project {
+  title: string;
+  status: string;
+  body: string;
+  /** Extra lines, e.g. talks or outcomes. */
+  notes?: string[];
+  links: Link[];
+  /** Project logo shown beside the entry. */
+  logo?: { src: string; alt: string; url?: string };
+  sponsor?: Sponsor;
 }
 
 export interface Publication {
@@ -64,6 +84,7 @@ export const highlights: string[] = [
 ];
 
 export const about = {
+  lab: { name: 'Data-Centric Intelligence Lab', logo: 'logos/dci-lab.png' },
   paragraphs: [
     'My research creates a data quality assurance paradigm so that AI models perform well in the manufacturing industrial internet. I have developed methods for data generation, acquisition, valuation, and sharing, with applications in additive manufacturing, bio-manufacturing, semiconductors, and IoT infrastructure design — combining statistical models, machine learning, and optimization.',
     'I also work on interpretable machine learning, predictive modeling with statistical models, and supply chain optimization with operations research. I received my Ph.D. from the Grado Department of Industrial and Systems Engineering at Virginia Tech, advised by Prof. Ran Jin.',
@@ -90,11 +111,15 @@ export const about = {
  *   video: { kind: 'vimeo', id: '123456789' }
  *   video: { kind: 'file', src: 'videos/demo.mp4', poster: 'videos/demo.jpg' }
  */
+const valvoline: Sponsor = { name: 'Valvoline', logo: 'logos/valvoline.png', url: 'https://www.valvoline.com/' };
+
 export const demos: Demo[] = [
   {
-    title: 'Tacit knowledge capture for factory operations',
+    title: 'AI decision support for industrial blending',
     description:
-      'An agentic AI framework that captures operators’ know-how and uses it to optimize factory operations and processes.',
+      'A GNN screens each lot order, XGBoost predicts quality specs, Bayesian optimization recommends material adjustments, and an LLM explains the decision with historical cases. Component codes and quantities are blurred.',
+    video: { kind: 'file', src: 'videos/valvoline-demo.mp4', poster: 'videos/valvoline-demo.jpg' },
+    sponsor: valvoline,
   },
   {
     title: 'Human digital twin',
@@ -103,24 +128,33 @@ export const demos: Demo[] = [
   },
 ];
 
-export const projects = [
+export const projects: Project[] = [
   {
     title: 'Tacit domain knowledge and AI-driven reinforcement learning for factory operations',
     status: 'Industry project, Apr 2025 – present',
-    body: 'With the MME Industry 4.0/5.0 Institute and Prof. Sam Anand. A knowledge-capture and continual-learning framework with an agentic AI backbone for factory operations and process optimization.',
-    links: [{ label: 'Prof. Sam Anand', url: 'https://researchdirectory.uc.edu/p/anands' }],
+    body: 'With the MME Industry 4.0/5.0 Institute and Prof. Sam Anand. A knowledge-capture and continual-learning framework with an agentic AI backbone for factory operations and process optimization, deployed as an end-to-end decision-support system for industrial blending.',
+    links: [
+      { label: 'Watch the demo', url: '#demos' },
+      { label: 'Prof. Sam Anand', url: 'https://researchdirectory.uc.edu/p/anands' },
+    ],
+    sponsor: valvoline,
   },
   {
-    title: 'Human digital twin',
+    title: 'AI for healthcare: human digital twins and neuro-oncology',
     status: 'With UC Health',
-    body: 'Human digital twin modeling through data synthesis and generative AI, supporting personalized and adaptive decision making in healthcare systems.',
+    body: 'Human digital twin modeling through data synthesis and generative AI, supporting personalized and adaptive decision making in healthcare. With Dr. Jonathan Forbes, I co-lead the development of the AI database for UC neuro-oncology, integrating multimodal imaging and longitudinal patient data.',
+    notes: [
+      'Talk: “AI-Driven Multimodal Imaging Integration: Bridging Radiology, Pathology, and Longitudinal Data for Predictive Oncology.” UC Health Neuro-Oncology Symposium, 2026.',
+    ],
     links: [],
   },
   {
-    title: 'Thermal systems data hub',
+    title: 'MultiphaseHUB: a living data hub for thermal and multiphase systems',
     status: 'Multi-university collaboration',
-    body: 'A data hub for thermal systems focused on data quality improvement, data valuation, and data sharing, with Prof. Ying Sun and Prof. Han Hu.',
+    body: 'A collaborative hub where researchers share, search, and download curated multiphase transport datasets from experiments and simulations, with versioned releases, rich metadata, and an agentic tool that turns papers into structured records. My work focuses on data quality, data valuation, and data sharing. With Prof. Ying Sun and Prof. Han Hu.',
+    logo: { src: 'logos/multiphasehub.png', alt: 'MultiphaseHUB logo', url: 'https://www.multiphasehub.org/' },
     links: [
+      { label: 'multiphasehub.org', url: 'https://www.multiphasehub.org/' },
       { label: 'Prof. Ying Sun', url: 'https://sites.google.com/view/ysunlab' },
       { label: 'Prof. Han Hu', url: 'https://engineering.uark.edu/mechanical-engineering/faculty/uid/hanhu/name/Han+Hu/' },
     ],
