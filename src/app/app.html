@@ -99,6 +99,12 @@
           <h3 class="item__title">{{ p.title }}</h3>
           <p class="item__meta">{{ p.status }}</p>
           <p class="item__body">{{ p.body }}</p>
+          @if (p.figure; as f) {
+            <figure class="item__figure">
+              <img [src]="f.src" [alt]="f.alt" [width]="f.width" [height]="f.height" loading="lazy" />
+              @if (f.caption) { <figcaption class="item__caption">{{ f.caption }}</figcaption> }
+            </figure>
+          }
           @if (p.demo; as d) {
             <div class="item__demo">
               @if ('interactive' in d) {

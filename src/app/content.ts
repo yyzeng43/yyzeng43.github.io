@@ -31,6 +31,8 @@ export interface Project {
   title: string;
   status: string;
   body: string;
+  /** Static figure shown under the description. */
+  figure?: { src: string; alt: string; width: number; height: number; caption?: string };
   /** Demo shown inside the project: a video, or the built-in interactive change-point demo. */
   demo?: { video: Video; caption?: string } | { interactive: 'change-point' };
   /** Short extra lines, e.g. funding. */
@@ -140,7 +142,14 @@ export const projects: Project[] = [
   {
     title: 'Tacit domain knowledge and AI-driven reinforcement learning for factory operations',
     status: 'Industry project, 2025 – present',
-    body: 'With the MME Industry 4.0/5.0 Institute and Prof. Sam Anand. A knowledge-capture and continual-learning framework with an agentic AI backbone for factory operations and process optimization, deployed as an end-to-end decision-support system for industrial blending: a GNN screens each lot order, XGBoost predicts quality specs, Bayesian optimization recommends material adjustments, and an LLM explains each decision with historical cases. The 2026 phase integrates LLMs, GNNs, and Bayesian optimization with AR/VR for workforce training.',
+    body: 'With the MME Industry 4.0/5.0 Institute. Much of the know-how that keeps a factory running lives with experienced operators and is never written down. We capture this tacit knowledge and turn it into decision support in three phases. First, we record experts’ undocumented decision rationales and organize them in knowledge graphs. Second, humans and AI learn from each other: an agentic LLM system with hypothesis, Q&A, and explainer agents draws knowledge out of operators, while a graph neural network learns how process parameters interrelate and a subgraph-level explainer pinpoints the key ones. Third, a graph-grounded reasoning model checks the LLM’s output against the GNN’s evidence before recommending a decision and explaining why. The system is deployed end to end for industrial blending: a GNN screens each lot order, XGBoost predicts quality specs, Bayesian optimization recommends material adjustments, and an LLM explains each decision with historical cases. The 2026 phase integrates LLMs, GNNs, and Bayesian optimization with AR/VR for workforce training.',
+    figure: {
+      src: 'figures/tacit-knowledge-system.png',
+      alt: 'System overview: machine and operational data (SOPs, manuals, historical and real-time data, machine configuration) feed a graph neural network with a subgraph-level explainer and an agentic LLM system with hypothesis, Q&A, and explainer agents, which also exchanges tacit knowledge with machine operator experts. Both feed a graph-grounded AI reasoning model that confidence-checks the GNN evidence pack against the LLM output to produce a recommendation and its reasoning.',
+      width: 941,
+      height: 523,
+      caption: 'Conceptual overview of the system.',
+    },
     demo: {
       video: { kind: 'file', src: 'videos/valvoline-demo.mp4', poster: 'videos/valvoline-demo.jpg' },
       caption: 'Demo of the decision-support system. Component codes and quantities are blurred.',
@@ -168,12 +177,19 @@ export const projects: Project[] = [
   {
     title: 'Riemannian ordinary least squares',
     status: 'Statistics on manifolds, NeurIPS 2026',
-    body: 'Extends ordinary least squares, the workhorse of linear regression, to data that live on Riemannian manifolds rather than in Euclidean space.',
+    body: 'Extends ordinary least squares from Euclidean space to complex data objects that live on Riemannian manifolds. Applications include brain imaging (diffusion tensors), motion capture (rotations), wind direction, mortality and single-cell distributions, and protein backbone angles.',
+    figure: {
+      src: 'figures/rols-applications.png',
+      alt: 'Five application domains for Riemannian OLS: brain imaging with diffusion tensors Sym+(3), motion capture with rotations SO(3), wind direction on the sphere S², mortality and single-cell distributions P2(R), and protein backbone angle pairs on the torus T², each with Euclidean covariates.',
+      width: 917,
+      height: 402,
+    },
     links: [],
     collaborators: [xiaoyuChen],
     outputs: [
       { kind: 'Paper', text: 'Chen, X., Huang, Y., Zeng, Y. Riemannian Ordinary Least Squares. NeurIPS 2026.' },
       { kind: 'Talk', text: 'Riemannian Ordinary Least Squares. INFORMS Annual Meeting, San Francisco, CA, 2026.' },
+      { kind: 'Code', text: 'github.com/XiaoyuChenPub/ROLS', url: 'https://github.com/XiaoyuChenPub/ROLS' },
     ],
   },
   {
