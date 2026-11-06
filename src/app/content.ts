@@ -145,7 +145,7 @@ export const projects: Project[] = [
       video: { kind: 'file', src: 'videos/valvoline-demo.mp4', poster: 'videos/valvoline-demo.jpg' },
       caption: 'Demo of the decision-support system. Component codes and quantities are blurred.',
     },
-    notes: ['PI on two MME Industry 4.0/5.0 Institute awards ($40,000 each, 2025 and 2026).'],
+    notes: ['PI on two MME Industry 4.0/5.0 Institute awards (2025 and 2026), in collaboration with Prof. Sam Anand.'],
     links: [{ label: 'Prof. Sam Anand', url: 'https://researchdirectory.uc.edu/p/anands' }],
     sponsor: valvoline,
     outputs: [
@@ -243,7 +243,7 @@ export const experience: Role[] = [
 export const skills = [
   {
     group: 'Machine Learning and AI',
-    items: ['GNNs', 'Generative models', 'Agentic LLMs', 'Reinforcement learning', 'Contextual bandits', 'Active learning', 'Bayesian optimization', 'Federated learning', 'Data valuation and selection', 'Synthetic data'],
+    items: ['GNNs', 'Generative models', 'Agentic LLMs', 'Reinforcement learning', 'Contextual bandits', 'Active learning', 'Bayesian optimization','Data valuation and selection', 'Synthetic data'],
   },
   {
     group: 'Statistics and OR',
