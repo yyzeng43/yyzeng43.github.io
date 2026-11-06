@@ -1,0 +1,210 @@
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top__inner">
+    <a class="top__name" href="#top">{{ c.profile.name }}</a>
+    <nav class="top__nav" aria-label="Sections">
+      @for (n of nav; track n.id) {
+        <a [href]="'#' + n.id" [class.is-active]="active() === n.id"
+           [attr.aria-current]="active() === n.id ? 'true' : null">{{ n.label }}</a>
+      }
+    </nav>
+    <button type="button" class="theme-btn" (click)="toggleTheme()" aria-label="Switch light or dark theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" /></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- Hero -->
+  <div class="hero wrap" id="top">
+    <div class="hero__text">
+      <h1 class="hero__name">{{ c.profile.name }}</h1>
+      <p class="hero__role">{{ c.profile.role }}</p>
+      <p class="hero__headline">{{ c.profile.headline }}</p>
+      <p class="hero__summary">{{ c.profile.summary }}</p>
+      <div class="actions">
+        <a class="btn btn--primary" [href]="'mailto:' + c.profile.email">Email me</a>
+        @if (c.profile.resumeUrl) {
+          <a class="btn" [href]="c.profile.resumeUrl" target="_blank" rel="noopener">Resume (PDF)</a>
+        }
+        @for (l of c.profile.links; track l.url) {
+          <a class="btn" [href]="l.url" target="_blank" rel="noopener">{{ l.label }}</a>
+        }
+      </div>
+    </div>
+    <picture class="hero__photo">
+      <source [srcset]="c.profile.photo + '.webp'" type="image/webp" />
+      <img [src]="c.profile.photo + '.jpg'" [alt]="'Portrait of ' + c.profile.name"
+           width="640" height="640" />
+    </picture>
+  </div>
+
+  <div class="wrap">
+    <app-shift-graphic />
+  </div>
+
+  <!-- About -->
+  <section class="sec wrap" id="about" aria-labelledby="about-h">
+    <h2 class="sec__h" id="about-h">About</h2>
+    <div class="sec__body">
+      <ul class="highlights" aria-label="Recent highlights">
+        @for (h of c.highlights; track h) { <li>{{ h }}</li> }
+      </ul>
+      <div class="prose">
+        @for (p of c.about.paragraphs; track $index) { <p>{{ p }}</p> }
+      </div>
+      <div class="split">
+        <div>
+          <h3 class="sub">Research interests</h3>
+          <ul class="tags">
+            @for (i of c.about.interests; track i) { <li>{{ i }}</li> }
+          </ul>
+        </div>
+        <div>
+          <h3 class="sub">Education</h3>
+          <ul class="plain">
+            @for (e of c.about.education; track e.degree) {
+              <li><span class="strong">{{ e.degree }}</span><br />
+                <span class="muted">{{ e.school }}, {{ e.years }}</span></li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demos -->
+  <section class="sec wrap" id="demos" aria-labelledby="demos-h">
+    <h2 class="sec__h" id="demos-h">Demos</h2>
+    <div class="sec__body">
+      <div class="demos">
+        @for (d of c.demos; track d.title) { <app-demo-card [demo]="d" /> }
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="sec wrap" id="projects" aria-labelledby="projects-h">
+    <h2 class="sec__h" id="projects-h">Projects</h2>
+    <div class="sec__body">
+      @for (p of c.projects; track p.title) {
+        <article class="item">
+          <h3 class="item__title">{{ p.title }}</h3>
+          <p class="item__meta">{{ p.status }}</p>
+          <p class="item__body">{{ p.body }}</p>
+          @if (p.links.length) {
+            <p class="item__links">
+              @for (l of p.links; track l.url) { <a [href]="l.url" target="_blank" rel="noopener">{{ l.label }}</a> }
+            </p>
+          }
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="sec wrap" id="experience" aria-labelledby="experience-h">
+    <h2 class="sec__h" id="experience-h">Experience</h2>
+    <div class="sec__body">
+      <ol class="timeline">
+        @for (r of c.experience; track r.title) {
+          <li class="role">
+            <div class="role__when">{{ r.start }} – {{ r.end }}</div>
+            <div>
+              <h3 class="role__title">{{ r.title }}</h3>
+              <p class="role__org">{{ r.org }}, {{ r.place }}</p>
+              <ul class="role__points">
+                @for (pt of r.points; track $index) { <li>{{ pt }}</li> }
+              </ul>
+            </div>
+          </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section class="sec wrap" id="publications" aria-labelledby="publications-h">
+    <h2 class="sec__h" id="publications-h">Publications</h2>
+    <div class="sec__body">
+      <app-publication-list [items]="c.publications" />
+      <p class="note">Full list on <a [href]="c.profile.links[0].url" target="_blank" rel="noopener">Google Scholar</a>.</p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="sec wrap" id="skills" aria-labelledby="skills-h">
+    <h2 class="sec__h" id="skills-h">Skills</h2>
+    <div class="sec__body">
+      @for (g of c.skills; track g.group) {
+        <div class="skill">
+          <h3 class="sub">{{ g.group }}</h3>
+          <ul class="tags">
+            @for (s of g.items; track s) { <li>{{ s }}</li> }
+          </ul>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Teaching & mentoring -->
+  <section class="sec wrap" id="teaching" aria-labelledby="teaching-h">
+    <h2 class="sec__h" id="teaching-h">Teaching</h2>
+    <div class="sec__body">
+      <div class="split">
+        <div>
+          <h3 class="sub">Instructor</h3>
+          <ul class="plain">
+            @for (t of c.teaching.instructor; track t.course) {
+              <li>{{ t.course }}<br /><span class="muted">{{ t.when }}</span></li>
+            }
+          </ul>
+          <h3 class="sub">Teaching assistant, Virginia Tech</h3>
+          <ul class="plain">
+            @for (t of c.teaching.ta; track t.course) {
+              <li>{{ t.course }}<br /><span class="muted">{{ t.when }}</span></li>
+            }
+          </ul>
+        </div>
+        <div>
+          <h3 class="sub">Ph.D. students</h3>
+          <ul class="plain">
+            @for (s of c.group.phd; track s.name) {
+              <li><span class="strong">{{ s.name }}</span><br /><span class="muted">{{ s.focus }}</span></li>
+            }
+          </ul>
+          <h3 class="sub">Undergraduate researchers</h3>
+          <ul class="plain">
+            @for (s of c.group.undergrad; track s.name) {
+              <li><span class="strong">{{ s.name }}</span><br /><span class="muted">{{ s.focus }}</span></li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service -->
+  <section class="sec wrap" id="service" aria-labelledby="service-h">
+    <h2 class="sec__h" id="service-h">Service</h2>
+    <div class="sec__body">
+      <ul class="plain">
+        @for (s of c.service.roles; track s.org) {
+          <li><span class="strong">{{ s.role }}</span>, {{ s.org }}<br /><span class="muted">{{ s.when }}</span></li>
+        }
+      </ul>
+      <h3 class="sub">Reviewer</h3>
+      <p class="muted reviewer">{{ c.service.reviewer.join('; ') }}</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <p>
+    <a [href]="'mailto:' + c.profile.email">{{ c.profile.email }}</a>
+    @for (l of c.profile.links; track l.url) { <a [href]="l.url" target="_blank" rel="noopener">{{ l.label }}</a> }
+  </p>
+  <p class="muted">© 2019–{{ year }} {{ c.profile.name }}.
+    Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>.</p>
+</footer>
