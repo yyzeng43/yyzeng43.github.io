@@ -291,7 +291,9 @@ a.pub__title:hover { color: var(--cobalt); text-decoration: underline; }
 .foot p:first-child { display: flex; flex-wrap: wrap; gap: 4px 20px; }
 
 /* ---------- Logos ---------- */
-.lab-logo { width: 217px; height: auto; border-radius: 6px; margin-bottom: 20px; }
+.lab-logo { display: inline-block; margin-bottom: 28px; border-radius: 6px; }
+.lab-logo img { width: 190px; height: auto; border-radius: 6px; }
+@media (max-width: 859px) { .lab-logo { margin-bottom: 20px; } .lab-logo img { width: 160px; } }
 
 .sponsor { display: flex; align-items: center; gap: 10px; margin-top: 12px; font-size: 0.85rem; color: var(--muted); }
 .sponsor__logo {
