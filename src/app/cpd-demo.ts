@@ -226,7 +226,7 @@ const KINDS: { key: Exclude<Kind, 'none'>; label: string }[] = [
 
       <p class="cpd__status" aria-live="polite">{{ status() }}</p>
 
-      <p class="item__caption">Illustrative simulation running in your browser. See the paper for the exact statistic and its guarantees.</p>
+      <p class="item__caption">Simplified illustration running in your browser: it compares windowed Wasserstein–Fréchet means, not the paper’s full tangent-space procedure.</p>
     </div>
   `,
 })

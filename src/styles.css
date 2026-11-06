@@ -369,3 +369,4 @@ a.pub__title:hover { color: var(--cobalt); text-decoration: underline; }
 .outputs { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--rule); display: grid; gap: 8px; max-width: 72ch; }
 .outputs li { display: grid; grid-template-columns: 52px 1fr; gap: 10px; font-size: 0.92rem; line-height: 1.45; }
 .outputs__kind { font-size: 0.78rem; font-weight: 600; color: var(--teal); padding-top: 2px; }
+.pub__code { font-size: 0.88rem; }

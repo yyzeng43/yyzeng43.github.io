@@ -22,7 +22,7 @@ export interface Sponsor {
 
 /** A paper or talk listed at the end of a project. */
 export interface Output {
-  kind: 'Paper' | 'Talk';
+  kind: 'Paper' | 'Preprint' | 'Talk' | 'Code';
   text: string;
   url?: string;
 }
@@ -51,8 +51,8 @@ export interface Publication {
   year: number;
   url?: string;
   type: 'journal' | 'conference' | 'preprint' | 'thesis';
-  /** Shown as "In collaboration with <name>". */
-  collab?: Link;
+  /** Link to code, shown after the venue. */
+  code?: string;
 }
 
 const xiaoyuChen: Link = { label: 'Dr. Xiaoyu Chen', url: 'https://www.acsu.buffalo.edu/~xchen325/' };
@@ -85,8 +85,8 @@ export const profile = {
 };
 
 export const highlights: string[] = [
-  'First-author paper at ICML 2026 on online change-point detection for distribution-valued data, with Dr. Xiaoyu Chen',
-  'Papers at NeurIPS 2026 (Riemannian ordinary least squares, with Dr. Xiaoyu Chen) and AAAI 2026 (hierarchical dataset selection)',
+  'First-author paper at ICML 2026 on online change-point detection for distribution-valued data',
+  'Papers at NeurIPS 2026 (Riemannian ordinary least squares) and AAAI 2026 (hierarchical dataset selection)',
   '19 peer-reviewed papers, including IEEE SaTML, IEEE T-ASE, and ACM TIST',
   '$80K in industry-institute funding as PI on two projects',
   'Organizer of the first Workshop on Resilient AI for Manufacturing (RAiM) at IEEE ICDM 2025',
@@ -148,12 +148,13 @@ export const projects: Project[] = [
   {
     title: 'Online change-point detection for distribution-valued data',
     status: 'Statistical learning, ICML 2026',
-    body: 'Classical monitoring tracks summaries such as the mean and can miss changes in a distribution’s shape. We monitor streams in which every observation is itself a distribution, comparing the Wasserstein–Fréchet means of a reference window and the most recent window, with false-alarm and detection-delay guarantees. Try it below: inject a shape or variance change and watch the distributional detector raise an alarm while a mean-based chart stays quiet.',
+    body: 'Classical monitoring tracks summaries such as the mean and can miss changes in a distribution’s shape. We monitor streams in which every observation is itself a distribution: optimal transport maps each distribution to the tangent space at a Wasserstein (Fréchet) barycenter, and multivariate functional PCA turns those tangent maps into control charts, for both continuous and discrete data. Case study: monitoring daily Reddit discussion of COVID-19 vaccines. Try the simplified demo below: inject a shape or variance change and watch the distributional detector raise an alarm while a mean-based chart stays quiet.',
     demo: { interactive: 'change-point' },
     links: [],
     collaborators: [xiaoyuChen],
     outputs: [
       { kind: 'Paper', text: 'Zeng, Y., Huang, Y., Chen, X. Beyond Euclidean Summaries: Online Change Point Detection for Distribution-Valued Data. ICML 2026.', url: 'https://arxiv.org/abs/2602.07252' },
+      { kind: 'Code', text: 'github.com/yyzeng43/IDD-icml', url: 'https://github.com/yyzeng43/IDD-icml' },
     ],
   },
   {
@@ -178,6 +179,7 @@ export const projects: Project[] = [
       { label: 'Prof. Han Hu', url: 'https://engineering.uark.edu/mechanical-engineering/faculty/uid/hanhu/name/Han+Hu/' },
     ],
     outputs: [
+      { kind: 'Preprint', text: 'MultiphaseHUB preprint, arXiv:2610.28644, 2026.', url: 'https://arxiv.org/abs/2610.28644' },
       { kind: 'Paper', text: 'Panda, J.P., Yan, L., Zeng, Y., Hu, H., Rishty, A., Plawsky, J., Sun, Y. Conditional Generative Modeling of Transient Flow Condensation Using Acoustic Signatures. AI Thermal Fluids, 100044, 2026.' },
     ],
   },
@@ -262,8 +264,8 @@ export const publications: Publication[] = [
   { type: 'journal', authors: 'Shohan, S., Zeng, Y.⁺, Chen, X., Jin, R., Shirwaiker, R.⁺', title: 'Investigating Dielectric Spectroscopy and Soft Sensing for Nondestructive Quality Assessment of Engineered Tissues', venue: 'Biosensors and Bioelectronics 216, 114286', year: 2022, url: 'https://www.sciencedirect.com/science/article/pii/S0956566322003268' },
   { type: 'journal', authors: 'Zeng, Y., Chen, X., Jin, R., Deng, X.', title: 'A Prediction-Oriented Optimal Design for Visualization Recommender Systems', venue: 'Statistical Theory and Related Fields 5(2), 134–148', year: 2021, url: 'https://www.tandfonline.com/doi/full/10.1080/24754269.2021.1905376' },
 
-  { type: 'conference', authors: 'Chen, X., Huang, Y., Zeng, Y.', title: 'Riemannian Ordinary Least Squares', venue: 'Conference on Neural Information Processing Systems (NeurIPS)', year: 2026, collab: xiaoyuChen },
-  { type: 'conference', authors: 'Zeng, Y., Huang, Y., Chen, X.', title: 'Beyond Euclidean Summaries: Online Change Point Detection for Distribution-Valued Data', venue: 'International Conference on Machine Learning (ICML)', year: 2026, url: 'https://arxiv.org/abs/2602.07252', collab: xiaoyuChen },
+  { type: 'conference', authors: 'Chen, X., Huang, Y., Zeng, Y.', title: 'Riemannian Ordinary Least Squares', venue: 'Conference on Neural Information Processing Systems (NeurIPS)', year: 2026 },
+  { type: 'conference', authors: 'Zeng, Y., Huang, Y., Chen, X.', title: 'Beyond Euclidean Summaries: Online Change Point Detection for Distribution-Valued Data', venue: 'International Conference on Machine Learning (ICML)', year: 2026, url: 'https://arxiv.org/abs/2602.07252', code: 'https://github.com/yyzeng43/IDD-icml' },
   { type: 'conference', authors: 'Aryal, M.R., Zeng, Y., Vadde, K., Wang, H., Piatt, E., Anand, S.', title: 'Tacit Domain Knowledge Extraction and AI-Driven Learning Framework for Optimization of Factory Operations', venue: '54th North American Manufacturing Research Conference (NAMRC 54)', year: 2026 },
   { type: 'conference', authors: 'Zhou, X., Zeng, Y., Jin, R., Lourentzou, I.', title: 'Hierarchical Dataset Selection for High-Quality Data Sharing', venue: 'AAAI Conference on Artificial Intelligence 40(34), 29026–29034', year: 2026 },
   { type: 'conference', authors: 'Zeng, Y., Lourentzou, I., Deng, X., Jin, R.', title: 'FAIR: Facilitating Artificial Intelligence Resilience in Manufacturing Industrial Internet', venue: 'IEEE International Conference on Cyber Security and Resilience (CSR)', year: 2025, url: scholar('Se3iqnhoufwC') },
@@ -299,9 +301,12 @@ export const talks = [
 export const group = {
   phd: [
     { name: 'Avranshu Mahanty', focus: 'Data quality and continual learning for resilient AI in manufacturing' },
-    { name: 'Haicheng (Chris) Wang', focus: 'Tacit knowledge modeling and disease progression modeling' },
   ],
-  undergrad: [{ name: 'Jayci Nguyen', focus: 'Research co-op on the tacit knowledge project' }],
+  undergrad: [
+    { name: 'Jayci Nguyen', focus: 'Research co-op, industry tacit knowledge project' },
+    { name: 'Tam Le', focus: 'Research co-op, industry tacit knowledge project' },
+    { name: 'Saksham Malhotra', focus: 'Research co-op, healthcare segmentation and progression modeling project' },
+  ],
 };
 
 export const teaching = {
