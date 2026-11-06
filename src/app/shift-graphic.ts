@@ -84,8 +84,8 @@ function buildShapes(): Shape[] {
         <text class="shift__label shift__label--cp" [attr.x]="cpX + 6" y="16">change point</text>
       </svg>
       <figcaption>
-        Same mean, same variance, different shape. Summary statistics miss this kind of shift;
-        my online change-point method for distribution-valued data catches it.
+        A distribution can change in shape while its mean and variance remain constant. Our online change-point method uses 
+        Wasserstein geometry to detect such shifts in distribution-valued observations. 
       </figcaption>
     </figure>
   `,

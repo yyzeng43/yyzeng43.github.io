@@ -375,3 +375,5 @@ a.pub__title:hover { color: var(--cobalt); text-decoration: underline; }
 .poster img { width: 280px; height: auto; border: 1px solid var(--rule); border-radius: 4px; background: #fff; }
 .poster:hover img { border-color: var(--cobalt); }
 .poster span { text-decoration: underline; text-underline-offset: 3px; }
+
+.prose strong { font-weight: 600; color: var(--ink); }

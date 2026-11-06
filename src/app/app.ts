@@ -50,6 +50,11 @@ export class App implements AfterViewInit {
     }
   }
 
+  /** Splits text on **bold** markers into plain and bold segments. */
+  protected rich(text: string) {
+    return text.split(/\*\*(.+?)\*\*/g).map((t, i) => ({ t, b: i % 2 === 1 })).filter((s) => s.t);
+  }
+
   protected toggleTheme() {
     const current =
       this.theme() ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');

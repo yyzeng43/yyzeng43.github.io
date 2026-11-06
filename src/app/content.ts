@@ -72,9 +72,9 @@ export const profile = {
   name: 'Yingyan Zeng',
   role: 'Assistant Professor, University of Cincinnati',
   headline:
-    'I build data-centric AI that stays reliable when real-world data is scarce, noisy, or sensitive.',
+    'I build data-centric AI that study how data quality and geometry shape machine learning in manufacturing and healthcare systems.',
   summary:
-    'I lead the Data-Centric Intelligence Lab in the Department of Mechanical, Materials, and Industrial Engineering at the University of Cincinnati. My work spans data valuation and selection, active learning, synthetic data, privacy-preserving data sharing, and statistical learning for complex data — applied to manufacturing, robotics, semiconductors, and healthcare.',
+    'I lead the Data-Centric Intelligence Lab in the Department of Mechanical, Materials, and Industrial Engineering at the University of Cincinnati. My work spans data valuation and selection, synthetic data, privacy-preserving data sharing, and statistical learning for complex manifold-valued data — applied to manufacturing, robotics, and healthcare.',
   photo: 'img/yingyan-zeng',
   email: 'zengyy@ucmail.uc.edu',
   /** Put resume.pdf in the public/ folder, then set this to 'resume.pdf'. Empty hides the button. */
@@ -88,25 +88,30 @@ export const profile = {
 
 export const highlights: string[] = [
   'First-author paper at ICML 2026 on online change-point detection for distribution-valued data',
-  'Papers at NeurIPS 2026 (Riemannian ordinary least squares) and AAAI 2026 (hierarchical dataset selection)',
+  'Papers at NeurIPS 2026 (Riemannian ordinary least squares) and AAAI 2026 oral (hierarchical dataset selection)',
   '19 peer-reviewed papers, including IEEE SaTML, IEEE T-ASE, and ACM TIST',
-  '$80K in industry-institute funding as PI on two projects',
+  'Industry-institute funding as PI on two projects',
   'Organizer of the first Workshop on Resilient AI for Manufacturing (RAiM) at IEEE ICDM 2025',
 ];
 
 export const about = {
   lab: { name: 'Data-Centric Intelligence Lab', logo: 'logos/dci-lab.webp' },
+  /** Wrap a phrase in **double asterisks** to bold it on the page. */
   paragraphs: [
-    'My research creates a data quality assurance paradigm so that AI models perform well in the manufacturing industrial internet. I have developed methods for data generation, acquisition, valuation, and sharing, with applications in additive manufacturing, bio-manufacturing, semiconductors, and IoT infrastructure design — combining statistical models, machine learning, and optimization.',
-    'I also develop statistical learning methods for distribution-valued and manifold-valued data, and build resilient AI systems for the manufacturing industrial internet. Earlier work spans interpretable machine learning and supply chain optimization with operations research. I received my Ph.D. from the Grado Department of Industrial and Systems Engineering at Virginia Tech, advised by Prof. Ran Jin.',
+    'My research focuses on **data quality assurance for machine learning** in connected manufacturing systems. Drawing on reinforcement learning, generative modeling, statistical learning, and optimization, I develop methods for **data generation, acquisition, and valuation**, as well as **data sharing under privacy constraints**. Applications include additive manufacturing, biomanufacturing, semiconductor manufacturing, and industrial Internet of Things infrastructure design.',
+
+    'A central direction of my research is to understand how the **geometry of data** informs quality assessment and change detection. I develop statistical learning methods for **manifold-valued observations** and **online change-point detection** methods for **distribution-valued data**, with applications in manufacturing and healthcare. My earlier work includes interpretable machine learning and operations research for supply chain optimization.',
+
+    'I received my Ph.D. from the Grado Department of Industrial and Systems Engineering at Virginia Tech, advised by Prof. Ran Jin, and a simultaneous M.S. in Computer Engineering at Virginia Tech, advised by Prof. Ruoxi Jia.',
   ],
   advisor: { label: 'Prof. Ran Jin', url: 'https://scholar.google.ca/citations?user=iFTR6Y8AAAAJ' },
   interests: [
     'Data quality',
-    'Privacy-preserving data valuation',
-    'Data sharing and generation',
+    'Privacy-preserving data sharing',
+    'Data valuation',
     'AI resilience',
     'Distribution-valued statistical learning',
+    'Manifold-valued data object',
     'Manufacturing industrial internet',
     'Healthcare AI',
   ],
