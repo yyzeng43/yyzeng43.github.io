@@ -166,9 +166,11 @@
             <div>
               <h3 class="role__title">{{ r.title }}</h3>
               <p class="role__org">{{ r.org }}, {{ r.place }}</p>
-              <ul class="role__points">
-                @for (pt of r.points; track $index) { <li>{{ pt }}</li> }
-              </ul>
+              @if (r.points.length) {
+                <ul class="role__points">
+                  @for (pt of r.points; track $index) { <li>{{ pt }}</li> }
+                </ul>
+              }
             </div>
           </li>
         }
@@ -242,8 +244,6 @@
               <li><span class="strong">{{ s.name }}</span><br /><span class="muted">{{ s.focus }}</span></li>
             }
           </ul>
-          <h3 class="sub">Outreach</h3>
-          <p class="outreach">{{ c.teaching.outreach }}</p>
         </div>
       </div>
     </div>

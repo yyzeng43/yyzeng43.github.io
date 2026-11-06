@@ -155,7 +155,7 @@ export const projects: Project[] = [
   {
     title: 'Online change-point detection for distribution-valued data',
     status: 'Statistical learning, ICML 2026',
-    body: 'Classical monitoring tracks summaries such as the mean and can miss changes in a distribution’s shape. We monitor streams in which every observation is itself a distribution: optimal transport maps each distribution to the tangent space at a Wasserstein (Fréchet) barycenter, and multivariate functional PCA turns those tangent maps into control charts, for both continuous and discrete data. Case study: monitoring daily Reddit discussion of COVID-19 vaccines. Try the simplified demo below: inject a shape or variance change and watch the distributional detector raise an alarm while a mean-based chart stays quiet.',
+    body: 'Each time step delivers a whole distribution, such as a batch of sensor readings or a histogram of intraoperative blood pressures. Classical monitoring tracks a mean and misses changes in shape. Our detector compares windows of distributions through their Wasserstein-Fréchet summaries, catching location, scale, and shape shifts online. Case study: monitoring daily Reddit discussion of COVID-19 vaccines. Try the simplified demo below: inject a shape or variance change and watch the distributional detector raise an alarm while a mean-based chart stays quiet.',
     demo: { interactive: 'change-point' },
     links: [],
     collaborators: [xiaoyuChen],
@@ -194,7 +194,7 @@ export const projects: Project[] = [
   {
     title: 'AI for healthcare: human digital twins and neuro-oncology',
     status: 'With UC Health',
-    body: 'Human digital twin modeling through data synthesis and generative AI, supporting personalized and adaptive decision making in healthcare. With Dr. Jonathan Forbes, I co-lead the development of the AI database for UC neuro-oncology, integrating multimodal imaging and longitudinal patient data. We also develop cross-contrast super-resolution that restores anisotropic brain T2w MRI for sharper 3D analysis and better downstream tumor segmentation.',
+    body: 'Human digital twin modeling through data synthesis and generative AI, supporting personalized and adaptive decision making in healthcare. I collaborate on the development of the AI database for UC neuro-oncology, integrating multimodal imaging and longitudinal patient data. We also develop cross-contrast super-resolution that restores anisotropic brain T2w MRI for sharper 3D analysis and better downstream tumor segmentation.',
     links: [],
     outputs: [
       { kind: 'Preprint', text: 'Shen, M., Wang, H., Trivedi, M., Wang, T.J., Xu, Y., Zeng, Y., Yuan, Y. Anatomically Consistent Cross-Contrast Super-Resolution of Anisotropic Brain T2w MRI. arXiv:2608.08401, 2026.', url: 'https://arxiv.org/abs/2608.08401' },
@@ -210,11 +210,7 @@ export const experience: Role[] = [
     place: 'Cincinnati, OH',
     start: 'Aug 2024',
     end: 'Present',
-    points: [
-      'Lead an applied ML research group in data-centric and resilient AI; PI on two industry-institute projects.',
-      'Developed online change-point detection for distribution-valued data streams that catches shifts in a distribution’s full shape (ICML 2026).',
-      'Built an agentic AI framework that captures operators’ tacit knowledge to optimize factory operations, now extended with LLMs, GNNs, and Bayesian optimization for AR/VR workforce training.',
-    ],
+    points: [],
   },
   {
     title: 'Research Scientist Intern',
@@ -231,9 +227,6 @@ export const experience: Role[] = [
     start: 'Aug 2019',
     end: 'Jul 2024',
     points: [
-      'Built a performance-oriented directed graph neural network that values datasets and matches them across organizations for data sharing and trading (IEEE T-ASE 2025).',
-      'Created ModelPred, which predicts a trained model from its training set without retraining, enabling fast data valuation and cleaning (IEEE SaTML 2023).',
-      'Designed contextual-bandit ensemble active learning that cuts labeling effort while improving accuracy in additive manufacturing (ACM TIST 2023).',
       'Industry projects: parallel meta-heuristics for large-scale facility location and vehicle routing (SWARM Engineering); a time-series quality model that automated inspection and raised prediction accuracy 5% (Yangtze Optical Fiber and Cable).',
     ],
   },
@@ -249,8 +242,8 @@ export const experience: Role[] = [
 
 export const skills = [
   {
-    group: 'ML and data',
-    items: ['GNNs', 'Transformers and attention', 'Generative models', 'LLMs', 'Reinforcement learning', 'Contextual bandits', 'Active learning', 'Bayesian optimization', 'Federated learning', 'Data valuation and selection', 'Synthetic data'],
+    group: 'Machine Learning and AI',
+    items: ['GNNs', 'Generative models', 'Agentic LLMs', 'Reinforcement learning', 'Contextual bandits', 'Active learning', 'Bayesian optimization', 'Federated learning', 'Data valuation and selection', 'Synthetic data'],
   },
   {
     group: 'Statistics and OR',
@@ -333,8 +326,6 @@ export const teaching = {
     { course: 'ISE 3124, Facilities Planning and Material Handling', when: 'Summer 2021' },
     { course: 'ISE 4404, Statistical Quality Control', when: 'Fall 2020' },
   ],
-  outreach:
-    'NSF SEED program workshop “Artificial Intelligence in Manufacturing”: a two-day workshop introducing advanced manufacturing and machine learning to high school students from underrepresented groups, Pathways for Future Engineers at Virginia Tech, 2023.',
 };
 
 export const service = {
