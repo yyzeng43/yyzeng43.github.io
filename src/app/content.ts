@@ -187,7 +187,7 @@ export const projects: Project[] = [
     links: [],
     collaborators: [xiaoyuChen],
     outputs: [
-      { kind: 'Paper', text: 'Chen, X., Huang, Y., Zeng, Y. Riemannian Ordinary Least Squares. NeurIPS 2026.' },
+      { kind: 'Paper', text: 'Chen, X., Huang, Y., Zeng, Y. Riemannian Ordinary Least Squares. NeurIPS 2026.' , url: 'https://arxiv.org/abs/2611.10459' },
       { kind: 'Talk', text: 'Riemannian Ordinary Least Squares. INFORMS Annual Meeting, San Francisco, CA, 2026.' },
       { kind: 'Code', text: 'github.com/XiaoyuChenPub/ROLS', url: 'https://github.com/XiaoyuChenPub/ROLS' },
     ],
@@ -282,7 +282,7 @@ export const publications: Publication[] = [
   { type: 'journal', authors: 'Shohan, S., Zeng, Y.⁺, Chen, X., Jin, R., Shirwaiker, R.⁺', title: 'Investigating Dielectric Spectroscopy and Soft Sensing for Nondestructive Quality Assessment of Engineered Tissues', venue: 'Biosensors and Bioelectronics 216, 114286', year: 2022, url: 'https://www.sciencedirect.com/science/article/pii/S0956566322003268' },
   { type: 'journal', authors: 'Zeng, Y., Chen, X., Jin, R., Deng, X.', title: 'A Prediction-Oriented Optimal Design for Visualization Recommender Systems', venue: 'Statistical Theory and Related Fields 5(2), 134–148', year: 2021, url: 'https://www.tandfonline.com/doi/full/10.1080/24754269.2021.1905376' },
 
-  { type: 'conference', authors: 'Chen, X., Huang, Y., Zeng, Y.', title: 'Riemannian Ordinary Least Squares', venue: 'Conference on Neural Information Processing Systems (NeurIPS)', year: 2026, code: 'https://github.com/XiaoyuChenPub/ROLS' },
+  { type: 'conference', authors: 'Chen, X., Huang, Y., Zeng, Y.', title: 'Riemannian Ordinary Least Squares', venue: 'Conference on Neural Information Processing Systems (NeurIPS)', year: 2026, url: 'https://arxiv.org/abs/2611.10459', code: 'https://github.com/XiaoyuChenPub/ROLS' },
   { type: 'conference', authors: 'Zeng, Y., Huang, Y., Chen, X.', title: 'Beyond Euclidean Summaries: Online Change Point Detection for Distribution-Valued Data', venue: 'International Conference on Machine Learning (ICML)', year: 2026, url: 'https://arxiv.org/abs/2602.07252', code: 'https://github.com/yyzeng43/IDD-icml' },
   { type: 'conference', authors: 'Aryal, M.R., Zeng, Y., Vadde, K., Wang, H., Piatt, E., Anand, S.', title: 'Tacit Domain Knowledge Extraction and AI-Driven Learning Framework for Optimization of Factory Operations', venue: '54th North American Manufacturing Research Conference (NAMRC 54)', year: 2026, url: 'https://www.sciencedirect.com/science/article/pii/S2213846326002166' },
   { type: 'conference', authors: 'Zhou, X., Zeng, Y., Jin, R., Lourentzou, I.', title: 'Hierarchical Dataset Selection for High-Quality Data Sharing', venue: 'AAAI Conference on Artificial Intelligence 40(34), 29026–29034', year: 2026 },
